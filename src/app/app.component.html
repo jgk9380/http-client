@@ -1,3 +1,16 @@
 <h1>
   {{title}}
 </h1>
+
+
+
+<button pButton type="button" label="Click"></button>
+<button pButton type="text" (click)="count()" label="Click"></button>
+
+<button pButton type="text" (click)="count()" icon="fa-check" label="Click"  style="font-size: 1.2em"></button>
+
+<button pButton type="text" (click)="count()" icon="fa-check" iconPos="right" label="Click"></button>
+
+<button pButton type="text" (click)="count()" icon="fa-check"  label="Click"></button>
+
+Number of clicks: {{clicks}}
