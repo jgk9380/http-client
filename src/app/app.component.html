@@ -14,3 +14,11 @@
 <button pButton type="text" (click)="count()" icon="fa-check"  label="Click"></button>
 
 Number of clicks: {{clicks}}
+
+
+<p-dataTable [value]="cars" >
+  <p-column field="vin" header="Vin" [sortable]="true" [editable]="true" ></p-column>
+  <p-column field="year" header="Year"></p-column>
+  <p-column field="brand" header="Brand" [sortable]="true"></p-column>
+  <p-column field="color" header="Color"></p-column>
+</p-dataTable>

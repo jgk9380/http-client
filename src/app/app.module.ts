@@ -6,7 +6,8 @@ import {ButtonModule} from 'primeng/primeng';
 
 
 import { AppComponent } from './app.component';
-
+import {DataTableModule,SharedModule} from 'primeng/primeng';
+import {CarService} from "./CarService";
 @NgModule({
   declarations: [
     AppComponent
@@ -15,9 +16,11 @@ import { AppComponent } from './app.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    ButtonModule
+    ButtonModule,
+    DataTableModule,
+    SharedModule
   ],
-  providers: [],
+  providers: [CarService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
