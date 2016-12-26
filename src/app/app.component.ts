@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import {CarService} from "./CarService";
-import {Car} from "./Car";
+import {StockPromotionService} from "./StockPromotionService";
+import {StockPromotion} from "./StockPromotion";
+
 
 @Component({
   selector: 'app-root',
@@ -11,29 +12,22 @@ import {Car} from "./Car";
 
 export class AppComponent {
 
-  clicks: number = 0;
+  tele: string ;
 
-  count() {
-    this.clicks++;
-    console.log("this.click="+this.clicks);
+  query() {
+    console.log("in query() this.tele="+this.tele)
+    this.stockPromotionService.getStockPromotion(this.tele).then(stockPromotions => this.stockPromotions = stockPromotions);
   }
-  title = 'app work11123s!';
+  title = '用户活动查询';
 
-  cars: Car[];
+  stockPromotions: StockPromotion[];
 
-  cols: any[];
 
-  constructor(private carService: CarService) { }
+  constructor(private stockPromotionService: StockPromotionService) { }
 
   ngOnInit() {
-    this.carService.getCarsSmall().then(cars => this.cars = cars);
-
-    this.cols = [
-      {field: 'vin', header: 'Vin'},
-      {field: 'year', header: 'Year'},
-      {field: 'brand', header: 'Brand'},
-      {field: 'color', header: 'Color'}
-    ];
+    console.log("init");
+    //this.stockPromotionService.getStockPromotion("15695159855").then(stockPromotions => this.stockPromotions = stockPromotions);
   }
 }
 
