@@ -1,4 +1,4 @@
-<div class="container" >
+<div class="container">
   <h1 class="text-center" style="margin: 2em">
     {{title}}
   </h1>
@@ -7,28 +7,36 @@
     <div class="form-group">
       <label for="tele" class="col-sm-2 control-label">电话号码：</label>
       <div class="col-sm-2">
-        <input type="text" [(ngModel)]="tele" [ngModelOptions]="{standalone: true}" class="form-control " id="tele" placeholder="请输入电话号码">
+        <input #tele type="text" class="form-control" id="tele" placeholder="请输入电话号码" (keyup.enter)="query(tele.value)">
       </div>
       <div class="col-sm-offset-3 col-sm-1">
-        <button type="submit" class="btn btn-default"  (click)="query()" >查询</button>
+        <button type="submit" class="btn btn-default" (click)="query(tele.value)">查询</button>
       </div>
     </div>
     <!--<div class="form-group">-->
-      <!--<label for="name" class="col-sm-2 control-label">姓名：</label>-->
-      <!--<div class="col-sm-2">-->
-        <!--<input type="email" class="form-control" id="name" placeholder="Enter email">-->
-      <!--</div>-->
+    <!--<label for="name" class="col-sm-2 control-label">姓名：</label>-->
+    <!--<div class="col-sm-2">-->
+    <!--<input type="email" class="form-control" id="name" placeholder="Enter email">-->
+    <!--</div>-->
     <!--</div>-->
   </form>
-
-
-  <p-dataTable [value]="stockPromotions" [resizableColumns]="true"   >
-    <header>用户可参加活动</header>
-    <!--<footer>用户可参加活动</footer>-->
-    <!--<p-column field="id" header="id" [sortable]="true"></p-column>-->
-    <!--<p-column field="tele" header=" "></p-column>-->
-    <p-column field="promotionName" header="活动名称" [sortable]="true" [style]="{'width':'15em','overflow':'auto'}"></p-column>
-    <p-column field="remark" header="活动内容" [style]="{'overflow':'visible'}"></p-column>
-  </p-dataTable>
+  <br/>
+  <br/>
+  <div *ngIf="stockPromotions&&stockPromotions[0]">
+    <p-dataTable [value]="stockPromotions" [resizableColumns]="true">
+      <header>用户可参加活动</header>
+      <!--<footer>用户可参加活动</footer>-->
+      <!--<p-column field="id" header="id" [sortable]="true"></p-column>-->
+      <!--<p-column field="tele" header=" "></p-column>-->
+      <p-column field="promotionName" header="活动名称" [sortable]="true"
+                [style]="{'width':'15em','overflow':'auto'}"></p-column>
+      <p-column field="remark" header="活动内容" [style]="{'overflow':'visible'}"></p-column>
+    </p-dataTable>
+  </div>
+  <div *ngIf="stockPromotions">
+    <div *ngIf="!stockPromotions[0]">
+      <h3 style="color: #0066FF">没有找到活动信息,请检查输入号码</h3>
+    </div>
+  </div>
 
 </div>

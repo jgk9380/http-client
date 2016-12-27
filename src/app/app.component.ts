@@ -12,11 +12,11 @@ import {StockPromotion} from "./StockPromotion";
 
 export class AppComponent {
 
-  tele: string ;
 
-  query() {
-    console.log("in query() this.tele="+this.tele)
-    this.stockPromotionService.getStockPromotion(this.tele).then(stockPromotions => this.stockPromotions = stockPromotions);
+
+  query(tele:string) {
+    console.log("in query() this.tele="+tele)
+    this.stockPromotionService.getStockPromotion(tele).then(stockPromotions => this.stockPromotions = stockPromotions);
   }
   title = '用户活动查询';
 
