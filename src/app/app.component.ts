@@ -1,33 +1,56 @@
 import { Component } from '@angular/core';
 import {StockPromotionService} from "./StockPromotionService";
 import {StockPromotion} from "./StockPromotion";
+import {Message} from "primeng/components/common/api";
 
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [StockPromotionService],
 })
 
 
 export class AppComponent {
-
-
-
-  query(tele:string) {
-    console.log("in query() this.tele="+tele)
-    this.stockPromotionService.getStockPromotion(tele).then(stockPromotions => this.stockPromotions = stockPromotions);
-  }
   title = '用户活动查询';
-
+  msgs: Message[] = [];
   stockPromotions: StockPromotion[];
-
 
   constructor(private stockPromotionService: StockPromotionService) { }
 
   ngOnInit() {
     console.log("init");
+    //this.showInfoMsg("请输入手机号码，查询用户活动信息","信息","info") ;
     //this.stockPromotionService.getStockPromotion("15695159855").then(stockPromotions => this.stockPromotions = stockPromotions);
   }
+
+  query(tele:string) {
+    this.clearInfoMsg();
+    this.stockPromotions=[];
+   //console.log("in query() this.tele="+tele)
+    if(!tele||tele.length!=11){
+      this.showInfoMsg("请输入正确的电话号码","错误","error") ;
+      return;
+    }
+    this.stockPromotionService.getStockPromotion(tele).then(stockPromotions => {
+
+      if(!stockPromotions||!stockPromotions[0]){
+        this.showInfoMsg("没有查到活动信息，请确认手机号码","提醒","warn") ;
+        return;
+      }
+      this.stockPromotions = stockPromotions;
+      //this.showInfoMsg("请输入手机号码，查询用户活动信息","信息","info") ;
+    });
+  }
+
+  showInfoMsg(msg:string,summary:string,severity:string) {
+    this.msgs.push({severity:severity, summary:summary, detail:msg});
+  }
+
+  clearInfoMsg(){
+   this.msgs=[];
+  }
+
 }
 

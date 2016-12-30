@@ -9,8 +9,8 @@ export class StockPromotionService {
   constructor(private http: Http) {
   }
 
-   // stockPromotionUrl: string = "http://122.192.127.45:8080/StockPromotion/byTele/";
-  stockPromotionUrl: string = "http://127.0.0.1:8080/StockPromotion/byTele/";
+  stockPromotionUrl: string = "http://122.192.127.45:1274/StockPromotion/byTele/";
+  //stockPromotionUrl: string = "http://127.0.0.1:8080/StockPromotion/byTele/";
   // getStockPromotion(tele:string) :Promise<StockPromotion[]>{
   //   // return new Promise<StockPromotion[]>(resolve =>
   //   //   setTimeout(resolve, 2000)) // delay 2 seconds
@@ -20,7 +20,8 @@ export class StockPromotionService {
 
   getStockPromotion(tele: string): Promise<StockPromotion[]> {
 
-    let tempStockPromotionUrl:string = this.stockPromotionUrl + tele;
+    //let tempStockPromotionUrl:string = this.stockPromotionUrl + tele;
+    let tempStockPromotionUrl:string  = `${this.stockPromotionUrl}/${tele}`;
     console.info("url=" + tempStockPromotionUrl);
     return this.http.get(tempStockPromotionUrl)
       .toPromise()
