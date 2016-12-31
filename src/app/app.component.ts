@@ -1,39 +1,56 @@
 import { Component } from '@angular/core';
-import {CarService} from "./CarService";
-import {Car} from "./Car";
+import {StockPromotionService} from "./StockPromotionService";
+import {StockPromotion} from "./StockPromotion";
+import {Message} from "primeng/components/common/api";
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [StockPromotionService],
 })
 
 
 export class AppComponent {
+  title = '用户活动查询';
+  msgs: Message[] = [];
+  stockPromotions: StockPromotion[];
 
-  clicks: number = 0;
-
-  count() {
-    this.clicks++;
-    console.log("this.click="+this.clicks);
-  }
-  title = 'app work11123s!';
-
-  cars: Car[];
-
-  cols: any[];
-
-  constructor(private carService: CarService) { }
+  constructor(private stockPromotionService: StockPromotionService) { }
 
   ngOnInit() {
-    this.carService.getCarsSmall().then(cars => this.cars = cars);
-
-    this.cols = [
-      {field: 'vin', header: 'Vin'},
-      {field: 'year', header: 'Year'},
-      {field: 'brand', header: 'Brand'},
-      {field: 'color', header: 'Color'}
-    ];
+    console.log("init");
+    //this.showInfoMsg("请输入手机号码，查询用户活动信息","信息","info") ;
+    //this.stockPromotionService.getStockPromotion("15695159855").then(stockPromotions => this.stockPromotions = stockPromotions);
   }
+
+  query(tele:string) {
+    this.clearInfoMsg();
+    this.stockPromotions=[];
+   //console.log("in query() this.tele="+tele)
+    if(!tele||tele.length!=11){
+      this.showInfoMsg("请输入正确的电话号码","错误","error") ;
+      return;
+    }
+    this.stockPromotionService.getStockPromotion(tele).then(stockPromotions => {
+
+      if(!stockPromotions||!stockPromotions[0]){
+        this.showInfoMsg("没有查到活动信息，请确认手机号码","提醒","warn") ;
+        return;
+      }
+      this.stockPromotions = stockPromotions;
+      //this.showInfoMsg("请输入手机号码，查询用户活动信息","信息","info") ;
+    });
+  }
+
+  showInfoMsg(msg:string,summary:string,severity:string) {
+    this.msgs.push({severity:severity, summary:summary, detail:msg});
+  }
+
+  clearInfoMsg(){
+   this.msgs=[];
+  }
+
 }
 

@@ -7,10 +7,14 @@ import {ButtonModule} from 'primeng/primeng';
 
 import { AppComponent } from './app.component';
 import {DataTableModule,SharedModule} from 'primeng/primeng';
-import {CarService} from "./CarService";
+
+import {MessagesModule} from 'primeng/primeng';
+import {GrowlModule} from 'primeng/primeng';
+import { Num2chinesePipe } from './num2chinese.pipe'
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    Num2chinesePipe
   ],
   imports: [
     BrowserModule,
@@ -18,9 +22,11 @@ import {CarService} from "./CarService";
     HttpModule,
     ButtonModule,
     DataTableModule,
-    SharedModule
+    SharedModule,
+    MessagesModule,
+    GrowlModule
   ],
-  providers: [CarService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
