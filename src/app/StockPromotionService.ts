@@ -34,6 +34,19 @@ export class StockPromotionService {
       .catch(this.handleError);
   }
 
+  getFileConent(){
+    return this.http.get("/1.txt")
+      .toPromise()
+      .then(response => {
+         console.log("res="+JSON.stringify(response));
+         console.log("res.txt="+(response.text()));
+        // console.log("res.json.data="+response.json().data);
+        return response.text();
+      })
+      .catch(this.handleError);
+  }
+
+
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error); // for demo purposes only
     alert("程序错误:"+(error.message||error.toString()));

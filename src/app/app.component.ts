@@ -26,6 +26,8 @@ export class AppComponent {
   }
 
   query(tele:string) {
+    // let xxx= this.stockPromotionService.getFileConent();
+    // console.log("xxx=",xxx);
     console.info("host:"+location.host);
     this.clearInfoMsg();
     this.stockPromotions=[];
