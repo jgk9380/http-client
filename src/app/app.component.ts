@@ -26,6 +26,7 @@ export class AppComponent {
   }
 
   query(tele:string) {
+    console.info("host:"+location.host);
     this.clearInfoMsg();
     this.stockPromotions=[];
    //console.log("in query() this.tele="+tele)
