@@ -2,17 +2,15 @@ import { Component } from '@angular/core';
 import {StockPromotionService} from "./StockPromotionService";
 import {StockPromotion} from "./StockPromotion";
 import {Message} from "primeng/components/common/api";
-
-
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  moduleId: 'module.id',
+  selector: 'hc-stock',
+  templateUrl: './stock.component.html',
+  styleUrls: ['./stock.component.css'],
   providers: [StockPromotionService],
 })
 
-
-export class AppComponent {
+export class StockComponent {
   title = '用户活动查询';
   msgs: Message[] = [];
   stockPromotions: StockPromotion[];

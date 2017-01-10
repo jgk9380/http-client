@@ -6,10 +6,10 @@
 
 var Node = function(data){
 	this._id = _nextNodeId++; // simple ints to allow the Kernel & ParticleSystem to chat
-	this.data = data || {};  // the user-serviceable parts
+	this.data = data || {};  // the loginUser-serviceable parts
 	this._mass = (data.mass!==undefined) ? data.mass : 1
 	this._fixed = (data.fixed===true) ? true : false
-	this._p = new Point((typeof(data.x)=='number') ? data.x : null, 
+	this._p = new Point((typeof(data.x)=='number') ? data.x : null,
                      (typeof(data.y)=='number') ? data.y : null)
   delete this.data.x
   delete this.data.y
@@ -58,7 +58,7 @@ var Point = function(x, y){
     y = x.y; x=x.x;
   }
   this.x = x;
-  this.y = y;  
+  this.y = y;
 }
 
 Point.random = function(radius){

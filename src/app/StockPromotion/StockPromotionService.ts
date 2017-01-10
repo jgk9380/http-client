@@ -1,9 +1,10 @@
 import {Injectable} from "@angular/core";
 import {Http, Response} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
-import {StockPromotion} from "./StockPromotion";
-import {stockPromotions} from "./stockPromotionList";
+
+
 import 'rxjs/add/operator/toPromise';
+import {StockPromotion} from "./StockPromotion";
 @Injectable()
 export class StockPromotionService {
   constructor(private http: Http) {
