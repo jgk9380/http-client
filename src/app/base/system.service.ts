@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
-import {SystemUser} from "../base/SystemUser";
+import {SystemUser} from "./SystemUser";
 
 
 @Injectable()
 //全局服务，一个应用只有一个
-export class LoginService {
+export class SystemService {
 
   loginUser: SystemUser;
 
@@ -15,6 +15,7 @@ export class LoginService {
   login(userId: string, pwd: string): Promise<boolean> {
     //TODO 添加登录逻辑,保存本地。下次登录可以读取这里的信息
     //loginUser
+
     this.loginUser=new SystemUser(userId);
     return Promise.resolve(true);
   }

@@ -11,15 +11,15 @@ require('rxjs/add/operator/toPromise');
 var StockPromotionService = (function () {
     function StockPromotionService(http) {
         this.http = http;
-        this.stockPromotionUrl = "http://122.192.127.45:1274/StockPromotion/byTele/";
+        this.stockPromotionUrl = "http://122.192.127.45:1274/StockPromotion/byTele";
     }
     // 1、网址
     // 外网段地址：122.192.127.45:1275/promotion/
     // 内网段地址：10.34.56.78/promotion/
     // 计费网地址：130.34.22.178/promotion/
     //stockPromotionUrl: string = "http://127.0.0.1:8080/StockPromotion/byTele/";
-    // getStockPromotion(tele:string) :Promise<StockPromotion[]>{
-    //   // return new Promise<StockPromotion[]>(resolve =>
+    // getStockPromotion(tele:string) :Promise<Stock[]>{
+    //   // return new Promise<Stock[]>(resolve =>
     //   //   setTimeout(resolve, 2000)) // delay 2 seconds
     //   //   .then(() => this.getCarsSmall());
     //   return Promise.resolve(stockPromotions);

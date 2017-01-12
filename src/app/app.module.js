@@ -10,13 +10,15 @@ var core_1 = require('@angular/core');
 var forms_1 = require('@angular/forms');
 var http_1 = require('@angular/http');
 var primeng_1 = require('primeng/primeng');
-var stock_component_1 = require('./StockPromotion/stock.component');
+var stock_component_1 = require('./Stock/stock.component');
 var primeng_2 = require('primeng/primeng');
 var primeng_3 = require('primeng/primeng');
 var primeng_4 = require('primeng/primeng');
 var num2chinese_pipe_1 = require('./base/num2chinese.pipe');
 var login_component_1 = require('./login/login.component');
-var login_service_1 = require("./login/login.service");
+var system_service_1 = require("./system.service");
+var app_component_1 = require('./app/app.component');
+var routing_module_1 = require("./routing.module");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -30,15 +32,17 @@ var AppModule = (function () {
                 primeng_2.DataTableModule,
                 primeng_2.SharedModule,
                 primeng_3.MessagesModule,
-                primeng_4.GrowlModule
+                primeng_4.GrowlModule,
+                routing_module_1.AppRoutingModule
             ],
             declarations: [
                 login_component_1.LoginComponent,
                 stock_component_1.StockComponent,
                 num2chinese_pipe_1.Num2chinesePipe,
+                app_component_1.AppComponent,
             ],
-            providers: [login_service_1.LoginService],
-            bootstrap: [stock_component_1.StockComponent]
+            providers: [system_service_1.SystemService],
+            bootstrap: [app_component_1.AppComponent]
         })
     ], AppModule);
     return AppModule;

@@ -1,0 +1,46 @@
+.pad {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  background: #ffc7c3;
+}
+.menu {
+  /* 两个边栏的宽度设为12em */
+  flex: 0 0 12em;
+  /*flex: flex-grow flex-shrink flex-basis|auto|initial|inherit;
+    flex-grow	一个数字，规定项目将相对于其他灵活的项目进行扩展的量。
+    flex-shrink	一个数字，规定项目将相对于其他灵活的项目进行收缩的量。
+    flex-basis	项目的长度。合法值："auto"、"inherit" 或一个后跟 "%"、"px"、"em" 或任何其他长度单位的数字。
+  */
+  background: #6ca6ff;
+}
+
+.menu-toggle {
+  flex: 0 0 18px;
+  background: #4e88ff;
+}
+
+
+
+
+.triangle-left {
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 16px solid #74baff;
+  position: absolute;
+  left: auto;
+  top: 50%;
+}
+
+.triangle-right {
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 16px solid #74baff;
+  position: absolute;
+  left: auto;
+  top: 50%;
+}

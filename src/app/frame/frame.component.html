@@ -1,0 +1,46 @@
+<!--<div>-->
+<!--<nav>-->
+<!--<a routerLink="/login">login</a>-->
+<!--<a routerLink="/stock">stock</a>-->
+<!--</nav>-->
+<!--</div>-->
+<!--<div>-->
+<!--<router-outlet></router-outlet>-->
+<!--</div>-->
+
+<!--<div class="body">-->
+<!--<header>header</header>-->
+<!--<div class="nav-bar">nav-bar</div>-->
+<!--<div class="main">-->
+<!--<nav class="nav-menu">nav-menu</nav>-->
+<!--<div class="nav-menu-toggle">-->
+<!--<div class="triangle-left"></div>-->
+<!--</div>-->
+<!--<main class="content">content</main>-->
+<!--<aside class="ads">ads</aside>-->
+<!--</div>-->
+<!--<footer>footer</footer>-->
+<!--</div>-->
+
+<!--host设置body样式-->
+<header>
+  <div style="margin-top: 0.5em">盐城联通存量活动管理</div>
+</header>
+<div class="menu-bar">
+  <hc-menu-bar></hc-menu-bar>
+</div>
+<div class="main">
+  <nav class="nav-menu" *ngIf="sideMenuToggle">
+  </nav>
+  <div class="nav-menu-toggle" (click)="menuToggle()">
+      <div [class.triangle-left]="sideMenuToggle" [class.triangle-right]="!sideMenuToggle"></div>
+  </div>
+  <main class="content">
+      <router-outlet></router-outlet>
+  </main>
+  <!--<aside class="ads">ads</aside>-->
+</div>
+<footer>
+  <div style="margin-right: 3em">互联网部 at 2017-01-12</div>
+</footer>
+

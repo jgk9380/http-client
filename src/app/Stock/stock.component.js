@@ -6,7 +6,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require('@angular/core');
-var StockPromotionService_1 = require("./StockPromotionService");
+var StockService_1 = require("./StockService");
 var StockComponent = (function () {
     function StockComponent(stockPromotionService) {
         this.stockPromotionService = stockPromotionService;
@@ -47,11 +47,11 @@ var StockComponent = (function () {
     };
     StockComponent = __decorate([
         core_1.Component({
-            moduleId: module.id,
+            moduleId: 'module.id',
             selector: 'hc-stock',
-            templateUrl: 'stock.component.html',
-            styleUrls: ["stock.component.css"],
-            providers: [StockPromotionService_1.StockPromotionService],
+            templateUrl: './stock.component.html',
+            styleUrls: ['./stock.component.css'],
+            providers: [StockService_1.StockPromotionService],
         })
     ], StockComponent);
     return StockComponent;

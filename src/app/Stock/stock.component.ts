@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {StockPromotionService} from "./StockPromotionService";
+import {StockPromotionService} from "./StockService";
 import {StockPromotion} from "./StockPromotion";
 import {Message} from "primeng/components/common/api";
 @Component({

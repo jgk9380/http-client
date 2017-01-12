@@ -7,8 +7,8 @@ describe('new App', function() {
     page = new NewPage();
   });
 
-  it('should display message saying app works', () => {
+  it('should display message saying frame works', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+    expect(page.getParagraphText()).toEqual('frame works!');
   });
 });
