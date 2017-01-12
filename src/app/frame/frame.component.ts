@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'http-client-app',
+  selector: 'hc-frame',
   templateUrl: './frame.component.html',
   styleUrls: ['./frame.component.css']
 })
@@ -12,7 +12,6 @@ export class FrameComponent implements OnInit {
   }
 
   ngOnInit() {
-
   }
 
   menuToggle() {

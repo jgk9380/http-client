@@ -54,13 +54,13 @@ header {
   overflow: scroll ;
 }
 
-/*.main .ads {*/
-  /*!* 两个边栏的宽度设为12em *!*/
-  /*flex: 0 0 12em;*/
-  /*background: #ffd7e7;*/
-  /*!*display: none;*!*/
-  /*order: 2;*/
-/*}*/
+.main .ads {
+  /* 两个边栏的宽度设为12em */
+  flex: 0 0 12em;
+  background: #ffd7e7;
+  /*display: none;*/
+  order: 2;
+}
 
 footer {
   flex: 1; /*让所有弹性盒模型对象的子元素都有相同的长度，忽略它们内部的内容：*/
