@@ -13,7 +13,7 @@ import {Router} from "@angular/router";
 })
 
 export class NavBar implements OnInit {
-  // sideMenuToggle: boolean;
+  // menuShow: boolean;
   items: NavBarItem[] = [];
   constructor(private router: Router,) {
   }
@@ -21,6 +21,7 @@ export class NavBar implements OnInit {
   ngOnInit() {
     this.items.push(new NavBarItem("登录", "/login"));
     this.items.push(new NavBarItem("存量", "/stock"))
+    this.items.push(new NavBarItem("报表", "/test1"))
     this.items.push(new NavBarItem("测试1", "/test1"))
     this.items.push(new NavBarItem("测试2", "/test2"))
   }

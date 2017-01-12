@@ -30,10 +30,11 @@
   <hc-menu-bar></hc-menu-bar>
 </div>
 <div class="main">
-  <nav class="nav-menu" *ngIf="sideMenuToggle">
+  <nav class="nav-menu" *ngIf="menuShow">
+    <hc-menu-pad></hc-menu-pad>
   </nav>
   <div class="nav-menu-toggle" (click)="menuToggle()">
-      <div [class.triangle-left]="sideMenuToggle" [class.triangle-right]="!sideMenuToggle"></div>
+      <div [class.triangle-left]="menuShow" [class.triangle-right]="!menuShow"></div>
   </div>
   <main class="content">
       <router-outlet></router-outlet>

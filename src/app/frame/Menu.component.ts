@@ -14,15 +14,11 @@ import {MenuItem} from "primeng/components/common/api";
 })
 
 export class MenuComponent implements OnInit {
-  // sideMenuToggle: boolean;
-
-  show:boolean=true;
+  // menuShow: boolean;
 
   constructor(private router: Router) {
   }
-
   private items: MenuItem[];
-
   ngOnInit() {
     this.items = [{
       label: 'File',
@@ -39,11 +35,6 @@ export class MenuComponent implements OnInit {
         ]
       }];
   }
-
-  toggle(){
-    this.show=!this.show;
-  }
-
 }
 
 

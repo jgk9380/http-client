@@ -6,17 +6,18 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./frame.component.css']
 })
 export class FrameComponent implements OnInit {
-  sideMenuToggle: boolean;
+  menuShow: boolean=false
 
   constructor() {
   }
 
   ngOnInit() {
-    this.sideMenuToggle = true;
+
   }
 
   menuToggle() {
     console.log("toggle menu");
-    this.sideMenuToggle = !this.sideMenuToggle;
+    this.menuShow = !this.menuShow;
   }
+
 }

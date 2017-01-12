@@ -31,7 +31,6 @@ header {
   flex-direction: row;
   flex: 1;
   /*background: #f6edff;*/
-  overflow: scroll ;
 }
 
 .main .nav-menu {
@@ -50,6 +49,9 @@ header {
 .main .content {
   flex: 1;
   background: #d9f6ff;
+  padding-left: 2em;
+  padding-top:2em;
+  overflow: scroll ;
 }
 
 /*.main .ads {*/
