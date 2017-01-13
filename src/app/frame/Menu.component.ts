@@ -18,11 +18,16 @@ export class MenuComponent implements OnInit {
 
   constructor(private router: Router) {
   }
-   items: MenuItem[];
+
+  items: MenuItem[];
+
   ngOnInit() {
     this.items = [{
       label: 'File',
+      expanded: true,
       items: [
+        {label: 'New', icon: 'fa-plus'},
+        {label: 'New', icon: 'fa-plus'},
         {label: 'New', icon: 'fa-plus'},
         {label: 'Open', icon: 'fa-download'}
       ]
@@ -31,17 +36,26 @@ export class MenuComponent implements OnInit {
         label: 'Edit',
         items: [
           {label: 'Undo', icon: 'fa-refresh'},
-          {label: 'Redo', icon: 'fa-repeat'}
+          {label: 'Redo', icon: 'fa-repeat'},
+          {label: 'New', icon: 'fa-plus'},
         ]
       },
       {
         label: 'save',
         items: [
           {label: 'save1', icon: 'fa-refresh'},
-          {label: 'save2', icon: 'fa-repeat'}
+          {label: 'save2', icon: 'fa-repeat',routerLink:"/test1"}
         ]
       },
+      {label: 'save', routerLink: "/test2"},
     ];
+  }
+
+  expanded(mi: MenuItem) {
+    mi.expanded = !mi.expanded;
+  }
+  navigate(mi: MenuItem) {
+    this.router.navigate([mi.routerLink]);
   }
 }
 

@@ -49,12 +49,21 @@
 
 
 <ul class="menu">
-  <li *ngFor="let item of items" >
-    <p class="title">{{item.label}}</p>
-    <!--<ul class='list-se' *ngIf="items.items">-->
-      <!--<p class="title">Item1</p>-->
-      <!--<li *ngFor="let itemse of items.items"><p>{{itemse.label}}</p></li>-->
-    <!--</ul>-->
+  <li *ngFor="let item of items">
+    <div *ngIf="!item.routerLink">
+      <div class="title-bar" (click)="expanded(item)">
+        <div class="triangle" [class.triangle-down]="item.expanded"  [class.triangle-right]="!item.expanded"></div>
+        <div class="title">{{item.label}}</div>
+      </div>
+      <ul class='list-se' *ngIf="item.items&&item.expanded">
+        <li *ngFor="let seItem of item.items">
+          <p class="link" (click)="navigate(seItem)">{{seItem.label}}</p>
+        </li>
+      </ul>
+    </div>
+    <div *ngIf="item.routerLink">
+      <p class="link" (click)="navigate(item)">{{item.label}}</p>
+    </div>
   </li>
 </ul>
 
