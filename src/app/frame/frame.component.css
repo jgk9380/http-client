@@ -90,13 +90,17 @@ footer {
   /*}*/
 /*}*/
 
-
+.nav-menu-toggle{
+  background: rgba(53, 255, 50, 0.23);
+  /*height:calc(100vh - 5em);*/
+  width:12px;
+}
 .triangle-left {
   width: 0;
   height: 0;
-  border-top: 8px solid transparent;
-  border-bottom: 8px solid transparent;
-  border-right: 16px solid #74baff;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-right: 12px solid #74baff;
   position: absolute;
   left: auto;
   top: 50%;
@@ -105,9 +109,9 @@ footer {
 .triangle-right {
   width: 0;
   height: 0;
-  border-top: 8px solid transparent;
-  border-bottom: 8px solid transparent;
-  border-left: 16px solid #74baff;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 12px solid #74baff;
   position: absolute;
   left: auto;
   top: 50%;

@@ -18,7 +18,7 @@ export class MenuComponent implements OnInit {
 
   constructor(private router: Router) {
   }
-  private items: MenuItem[];
+   items: MenuItem[];
   ngOnInit() {
     this.items = [{
       label: 'File',
@@ -33,7 +33,15 @@ export class MenuComponent implements OnInit {
           {label: 'Undo', icon: 'fa-refresh'},
           {label: 'Redo', icon: 'fa-repeat'}
         ]
-      }];
+      },
+      {
+        label: 'save',
+        items: [
+          {label: 'save1', icon: 'fa-refresh'},
+          {label: 'save2', icon: 'fa-repeat'}
+        ]
+      },
+    ];
   }
 }
 

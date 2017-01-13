@@ -6,7 +6,8 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./frame.component.css']
 })
 export class FrameComponent implements OnInit {
-  menuShow: boolean=false
+  menuShow: boolean=false;
+  adsShow:boolean=false;
 
   constructor() {
   }
