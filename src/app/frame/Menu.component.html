@@ -57,12 +57,12 @@
       </div>
       <ul class='list-se' *ngIf="item.items&&item.expanded">
         <li *ngFor="let seItem of item.items">
-          <p class="link" (click)="navigate(seItem)">{{seItem.label}}</p>
+          <p class="link"  [class.select]="item.selected" (click)="navigate(seItem)">{{seItem.label}}</p>
         </li>
       </ul>
     </div>
     <div *ngIf="item.routerLink">
-      <p class="link" (click)="navigate(item)">{{item.label}}</p>
+      <p class="link" [class.select]="item.selected" (click)="navigate(item)">{{item.label}}</p>
     </div>
   </li>
 </ul>

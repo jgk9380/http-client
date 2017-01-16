@@ -44,6 +44,10 @@
   cursor: pointer;
   margin-top: 1px;
 }
+.menu  .link:hover{
+  color:#cfecff;
+  background: blue;
+}
 
 .triangle-right {
   width: 0;
@@ -63,4 +67,9 @@
   border-top: 12px solid #74baff;
   position: relative;
   left: 10px;
+}
+
+.select{
+  color:#cfecff;
+  background: blue;
 }

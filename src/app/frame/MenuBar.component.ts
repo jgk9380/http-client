@@ -6,6 +6,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {MenuItem} from "primeng/components/common/api";
 import {SystemService} from "../base/system.service";
+import {NavBarItem} from "./menu.service";
 
 @Component({
   moduleId: 'module.id',
@@ -34,28 +35,15 @@ export class NavBar implements OnInit {
   click(nbi: NavBarItem) {
     console.log("click on " + nbi.title + "  link = " + nbi.link)
     if(this.ss.currentNavBarItem)
-      this.ss.currentNavBarItem.isCurrent=false;
-    nbi.isCurrent=true;
+      this.ss.currentNavBarItem.isSelect=false;
+    nbi.isSelect=true;
     this.ss.currentNavBarItem=nbi;
     this.router.navigate([nbi.link]);
   }
 
   isCurrent(nbi:NavBarItem):boolean{
-       return (nbi&&nbi.isCurrent);
+       return (nbi&&nbi.isSelect);
   }
 
 }
 
-
-export class NavBarItem {
-  title: string;
-  link: string;
-  leftMenu:MenuItem[];
-  isCurrent:boolean;
-
-  constructor(title: string, link: string) {
-    this.title = title;
-    this.link = link;
-  }
-
-}

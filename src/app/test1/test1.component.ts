@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
 
 @Component({
   selector: 'http-client-test1',
@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Test1Component implements OnInit {
 
+  //constructor(private ly:NgLayer, private vcRef:ViewContainerRef) { }
   constructor() { }
 
   ngOnInit() {
