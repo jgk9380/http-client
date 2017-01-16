@@ -2,7 +2,6 @@
   <h2 class="text-center" style="margin: 1.5em">
     {{title}}
   </h2>
-
   <form role="form" class="form-horizontal">
     <div class="form-group">
       <label for="tele" class="col-sm-2 control-label">电话号码：</label>
@@ -13,7 +12,6 @@
         <button type="submit" class="btn btn-default" (click)="query(tele.value)">查询</button>
       </div>
     </div>
-
   </form>
   <br/>
 
@@ -24,15 +22,6 @@
   <br/>
 
   <div *ngIf="stockPromotions&&stockPromotions[0]" class="result">
-    <!--<p-dataTable [value]="stockPromotions" [resizableColumns]="true">-->
-    <!--<header>用户可参加活动</header>-->
-    <!--&lt;!&ndash;<footer>用户可参加活动</footer>&ndash;&gt;-->
-    <!--&lt;!&ndash;<p-column field="id" header="id" [sortable]="true"></p-column>&ndash;&gt;-->
-    <!--&lt;!&ndash;<p-column field="tele" header=" "></p-column>&ndash;&gt;-->
-    <!--<p-column field="promotionName" header="活动名称" [sortable]="true"-->
-    <!--[style]="{'width':'15em','overflow':'auto'}"></p-column>-->
-    <!--<p-column field="remark" header="活动内容" [style]="{'overflow':'visible'}"></p-column>-->
-    <!--</p-dataTable>-->
     <span class="item-reslut-title">该用户可参加如下活动：</span>
     <br/><br/>
     <div *ngFor="let stockPromotion of stockPromotions;let i=index" class="item">
@@ -44,13 +33,4 @@
   </div>
 </div>
 
-<div>1</div>
-<div>2</div>
-<div>3</div>
-<div>5</div>
-<div>4</div>
-<div>6</div>
-<div>7</div>
-<div>8</div>
-<div>9</div>
-<div>11</div>
+

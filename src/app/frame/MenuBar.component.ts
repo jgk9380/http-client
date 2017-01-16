@@ -6,7 +6,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {MenuItem} from "primeng/components/common/api";
 import {SystemService} from "../base/system.service";
-import {NavBarItem} from "./menu.service";
+import {NavBarItem, MenuService} from "./menu.service";
 
 @Component({
   moduleId: 'module.id',
@@ -17,32 +17,14 @@ import {NavBarItem} from "./menu.service";
 
 export class NavBar implements OnInit {
   // menuShow: boolean;
-  items: NavBarItem[]=[];
 
-  constructor(private router: Router, private ss:SystemService) {
+
+  constructor(private router: Router, private ss:SystemService,public  ms:MenuService) {
   }
 
   ngOnInit() {
-    //this.items=this.ss.items;
-    this.items.push(new NavBarItem("登录", "/login"));
-    this.items.push(new NavBarItem("存量", "/stock"));
-    this.items.push(new NavBarItem("报表", "/test1"));
-    this.items.push(new NavBarItem("测试1", "/test1"));
-    this.items.push(new NavBarItem("测试2", "/test2"));
+
     // console.log("items.len="+this.items.length);
-  }
-
-  click(nbi: NavBarItem) {
-    console.log("click on " + nbi.title + "  link = " + nbi.link)
-    if(this.ss.currentNavBarItem)
-      this.ss.currentNavBarItem.isSelect=false;
-    nbi.isSelect=true;
-    this.ss.currentNavBarItem=nbi;
-    this.router.navigate([nbi.link]);
-  }
-
-  isCurrent(nbi:NavBarItem):boolean{
-       return (nbi&&nbi.isSelect);
   }
 
 }

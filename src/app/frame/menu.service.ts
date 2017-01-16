@@ -1,31 +1,30 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Router} from "@angular/router";
 
 
 @Injectable()
 export class MenuService {
-  private  nbiItems: NavBarItem[]=[];
-  currentNbi:NavBarItem;
-  currentMenuItem:MenuItem;
+  nbiItems: NavBarItem[] = [];//横菜单
+  currentNbi: NavBarItem;//及左菜单
+  currentMenuItem: MenuItem;
 
   constructor(private router: Router) {
-    this.nbiItems.push(new NavBarItem("登录", "/login"));
-    this.nbiItems.push(new NavBarItem("存量", "/stock"));
-    this.nbiItems.push(new NavBarItem("报表", "/test1"));
-    this.nbiItems.push(new NavBarItem("测试1", "/test1"));
-    this.nbiItems.push(new NavBarItem("测试2", "/test2"));
-  }
-
-  isCurrentNbiItem(nbiItem:NavBarItem){
+    this.currentNbi = this.getLoginNbiItem();
+    this.currentNbi.isSelected=true;
+    this.nbiItems.push(this.currentNbi);
+    this.nbiItems.push(this.getStockNbiItem());
+    this.nbiItems.push(this.getReportNbiItem());
 
   }
-  isCurrentMenuItem(mi:MenuItem):boolean{
-    return
+
+  getCurrentNavBarItem(): NavBarItem[] {
+      return this.nbiItems;
   }
- getCurrentNavBarItem():NavBarItem[]{
-    return this.nbiItems;
- }
-  navigate(mi: MenuItem) {
+  expanded(mi: MenuItem) {
+    mi.expanded = !mi.expanded;
+  }
+
+  click(mi: MenuItem) {
     if (this.currentMenuItem)
       this.currentMenuItem.isSelected = false;
     this.currentMenuItem = mi;
@@ -33,11 +32,95 @@ export class MenuService {
 
     if (mi.routerLink) {
       this.router.navigate([mi.routerLink]);
-      console.log(this.currentMenuItem.label + " isSelected and navigate  to link=" + this.currentMenuItem.routerLink);
+      console.log("menu:"+this.currentMenuItem.label + " isSelected and navigate  to link=" + this.currentMenuItem.routerLink);
     }
     else {
-      console.log(this.currentMenuItem.label + " isSelected and no  link=");
+      console.log("menu:"+this.currentMenuItem.label + " isSelected and no  link=");
     }
+    console.log("selected="+mi.isSelected)
+  }
+
+  clickBarItem(nbi: NavBarItem) {
+    console.log("click on navBar:" + nbi.title + "  links = " + nbi.link)
+    if(this.currentNbi)
+      this.currentNbi.isSelected=false;
+    nbi.isSelected=true;
+    this.currentNbi=nbi;
+    this.router.navigate([nbi.link]);
+  }
+
+  getLoginNbiItem() {
+    let loginBarItem = new NavBarItem("登录", "/login");
+    let items = [{
+      label: 'File',
+      expanded: true,
+      items: [
+        {label: 'New', icon: 'fa-plus'},
+        {label: 'Open', icon: 'fa-download'}
+      ]
+    },
+      {
+        label: 'Edit',
+        items: [
+          {label: 'Undo', icon: 'fa-refresh', disabled: true},
+          {label: 'Redo', icon: 'fa-repeat', disabled: true},
+          {label: 'New', icon: 'fa-plus', disabled: true},
+        ]
+      },
+      {label: 'save', routerLink: "/test2"},
+    ];
+    loginBarItem.childMenu = items;
+    return loginBarItem;
+  }
+
+  getStockNbiItem() {
+    let stockBarItem = new NavBarItem("存量", "/stock");
+    let items = [{
+      //是不是要重新命名一个新的？
+      label: 'File1',
+      expanded: true,
+      items: [
+        {label: 'New1', icon: 'fa-plus'},
+        {label: 'Open1', icon: 'fa-download'}
+      ]
+    },
+      {
+        label: 'Edit1',
+        items: [
+          {label: 'Undo1', icon: 'fa-refresh', disabled: true},
+          {label: 'Redo1', icon: 'fa-repeat', disabled: true},
+          {label: 'New1', icon: 'fa-plus', disabled: true},
+        ]
+      },
+      {label: 'save1', routerLink: "/test2"},
+    ];
+    stockBarItem.childMenu = items;
+    return stockBarItem
+  }
+
+  getReportNbiItem() {
+    let reportBarItem = new NavBarItem("报表", "/test1")
+    let items = [{
+      //是不是要重新命名一个新的？
+      label: 'File11',
+      expanded: true,
+      items: [
+        {label: 'New11', icon: 'fa-plus'},
+        {label: 'Open11', icon: 'fa-download'}
+      ]
+    },
+      {
+        label: 'Edit11',
+        items: [
+          {label: 'Undo11', icon: 'fa-refresh', disabled: true},
+          {label: 'Redo11', icon: 'fa-repeat', disabled: true},
+          {label: 'New11', icon: 'fa-plus', disabled: true},
+        ]
+      },
+      {label: 'save11', routerLink: "/test2"},
+    ];
+    reportBarItem.childMenu = items;
+    return reportBarItem;
   }
 }
 
@@ -46,8 +129,8 @@ export class MenuService {
 export class NavBarItem {
   title: string;
   link: string;
-  childMenu:MenuItem[];
-  isSelect:boolean;
+  childMenu: MenuItem[];
+  isSelected: boolean=false;
 
   constructor(title: string, link: string) {
     this.title = title;
@@ -55,7 +138,6 @@ export class NavBarItem {
   }
 
 }
-
 
 
 export class MenuItem {
@@ -68,5 +150,6 @@ export class MenuItem {
   items?: MenuItem[];
   expanded?: boolean;
   disabled?: boolean;
-  isSelected?: boolean=false;
+  isSelected?: boolean = false;
+
 }

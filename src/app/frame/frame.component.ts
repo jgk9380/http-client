@@ -8,10 +8,8 @@ import {Component, OnInit} from '@angular/core';
 export class FrameComponent implements OnInit {
   menuShow: boolean=false;
   adsShow:boolean=false;
-
   constructor() {
   }
-
   ngOnInit() {
   }
 

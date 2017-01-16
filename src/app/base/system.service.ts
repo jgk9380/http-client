@@ -1,14 +1,12 @@
 import {Injectable, OnInit} from '@angular/core';
 import {SystemUser} from "./SystemUser";
-import {NavBarItem} from "../frame/MenuBar.component";
+
 
 
 @Injectable()
 //全局服务，一个应用只有一个
 export class SystemService  {
   loginUser: SystemUser;
-  currentNavBarItem: NavBarItem;//横菜单及左菜单
-  items: NavBarItem[] = [];
   constructor() {
 
   }

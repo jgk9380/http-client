@@ -20,6 +20,7 @@ import {MenuModule,PanelMenuModule,MenuItem} from 'primeng/primeng';
 import { Test1Component } from './test1/test1.component';
 import { Test2Component } from './test2/test2.component';
 import {MenuComponent} from "./frame/Menu.component";
+import {MenuService} from "./frame/menu.service";
 @NgModule({
   imports: [
     BrowserModule,
@@ -44,7 +45,7 @@ import {MenuComponent} from "./frame/Menu.component";
     Test2Component,
     MenuComponent,
   ],
-  providers: [SystemService],
+  providers: [SystemService,MenuService],
   bootstrap: [FrameComponent]
 })
 export class AppModule { }

@@ -12,12 +12,14 @@
 .menu>li{
   list-style: none;
 }
+
 .menu  .title{
   text-align: center;
   display: inline;
   float: left;
   margin-left: 36px;
 }
+
 .menu  .triangle{
   display: inline;
   float: left;
@@ -35,7 +37,7 @@
   margin-top: 1px;
 }
 
-.menu  .link{
+ .link{
   color:blue;
   background: #cfecff;
   height: 2em;
@@ -44,9 +46,21 @@
   cursor: pointer;
   margin-top: 1px;
 }
-.menu  .link:hover{
+
+ .link:hover{
+    color:#cfecff;
+   background: #8e93ff;
+
+}
+
+.select{
   color:#cfecff;
   background: blue;
+  height: 2em;
+  text-align: center;
+  padding-top: 0.3em;
+  cursor: pointer;
+  margin-top: 1px;
 }
 
 .triangle-right {
@@ -69,7 +83,5 @@
   left: 10px;
 }
 
-.select{
-  color:#cfecff;
-  background: blue;
-}
+
+
