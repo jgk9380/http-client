@@ -1,6 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 @import   '../node_modules/primeng/resources/themes/omega/theme.css';
 @import url('../node_modules/primeng/resources/primeng.min.css');
+@import url('../node_modules/font-awesome-4.7.0/css/font-awesome.min.css');
 @import url("../node_modules/bootstrap/dist/css/bootstrap.min.css");
+
+
+
+/*<link rel="stylesheet" type="text/css" href="YOUR_PATH/font-awesome.min.css" />*/
 
 

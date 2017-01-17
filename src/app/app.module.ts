@@ -22,6 +22,7 @@ import { Test2Component } from './test2/test2.component';
 import {MenuComponent} from "./frame/Menu.component";
 import {MenuService} from "./frame/menu.service";
 import { MainComponent } from './main/main.component';
+import {DialogModule} from 'primeng/primeng';
 @NgModule({
   imports: [
     BrowserModule,
@@ -34,7 +35,8 @@ import { MainComponent } from './main/main.component';
     GrowlModule,
     AppRoutingModule,
     MenuModule,
-    PanelMenuModule
+    PanelMenuModule,
+    DialogModule
   ],
   declarations: [
     LoginComponent,

@@ -116,3 +116,12 @@ footer {
   left: auto;
   top: 50%;
 }
+
+
+.ui-dialog-titlebar{
+  background: #adc9ff;
+}
+
+.ui-dialog-title{
+  background: #adc9ff;
+}
