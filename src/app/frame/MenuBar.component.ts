@@ -5,7 +5,7 @@ import {Component, OnInit} from '@angular/core';
 
 import {Router} from "@angular/router";
 import {MenuItem} from "primeng/components/common/api";
-import {SystemService} from "../base/system.service";
+import {SystemService} from "../base/System.service";
 import {NavBarItem, MenuService} from "./menu.service";
 
 @Component({

@@ -37,7 +37,7 @@
   margin-top: 1px;
 }
 
- .link{
+ .menu .link{
   color:blue;
   background: #cfecff;
   height: 2em;
@@ -47,13 +47,12 @@
   margin-top: 1px;
 }
 
- .link:hover{
-    color:#cfecff;
+ .menu .link:hover{
+   color:#cfecff;
    background: #8e93ff;
-
 }
 
-.select{
+.menu .select{
   color:#cfecff;
   background: blue;
   height: 2em;

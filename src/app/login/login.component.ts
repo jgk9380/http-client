@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {SystemService} from "../base/system.service";
-import {SystemUser} from "../base/SystemUser";
+import {SystemService} from "../base/System.service";
 
 @Component({
   moduleId:'module.id',
@@ -8,29 +7,38 @@ import {SystemUser} from "../base/SystemUser";
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
-  userId: string;
-  pwd: string;
-  loginUser: SystemUser;
 
-  constructor(private ls: SystemService) {
+export class LoginComponent implements OnInit {
+
+  public userId: string="";
+  public pwd: string="";
+  rememberMe:boolean;
+
+  constructor(private ss: SystemService) {
   }
 
   ngOnInit() {
+
   }
 
   login() {
-    if (this.ls.login(this.userId, this.pwd))
-      this.loginUser = this.ls.loginUser;
+    console.log("userId="+this.userId+"  pwd="+this.pwd+"  rememberMe="+this.rememberMe);
+    if (this.ss.login(this.userId, this.pwd,this.rememberMe))
+      console.log("登录成功")
       //如果成功，保存用户名，密码。以便下次登录使用免输密码。
     else
-      //console.log("登录失败");界面提示登录失败
-      ;
+      console.log("登录失败");//界面提示登录失败
   };
 
   loginOut() {
-    this.loginUser = null;
-    this.ls.loginOut();
+    this.ss.loginOut();
   }
 
+}
+
+
+export class LoginInfo{
+  public userId: string="";
+  public pwd: string="";
+  public rememberMe:boolean=true;
 }

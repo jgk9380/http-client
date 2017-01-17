@@ -12,7 +12,7 @@ import {MessagesModule} from 'primeng/primeng';
 import {GrowlModule} from 'primeng/primeng';
 import { Num2chinesePipe } from './base/num2chinese.pipe';
 import { LoginComponent } from './login/login.component'
-import {SystemService} from "./base/system.service";
+import {SystemService} from "./base/System.service";
 import { FrameComponent } from './frame/frame.component';
 import {AppRoutingModule} from "./routing.module";
 import {NavBar} from "./frame/MenuBar.component";
@@ -21,6 +21,7 @@ import { Test1Component } from './test1/test1.component';
 import { Test2Component } from './test2/test2.component';
 import {MenuComponent} from "./frame/Menu.component";
 import {MenuService} from "./frame/menu.service";
+import { MainComponent } from './main/main.component';
 @NgModule({
   imports: [
     BrowserModule,
@@ -44,6 +45,7 @@ import {MenuService} from "./frame/menu.service";
     Test1Component,
     Test2Component,
     MenuComponent,
+    MainComponent,
   ],
   providers: [SystemService,MenuService],
   bootstrap: [FrameComponent]

@@ -14,12 +14,12 @@ export class MenuService {
     this.nbiItems.push(this.currentNbi);
     this.nbiItems.push(this.getStockNbiItem());
     this.nbiItems.push(this.getReportNbiItem());
-
   }
 
   getCurrentNavBarItem(): NavBarItem[] {
       return this.nbiItems;
   }
+
   expanded(mi: MenuItem) {
     mi.expanded = !mi.expanded;
   }
@@ -151,5 +151,4 @@ export class MenuItem {
   expanded?: boolean;
   disabled?: boolean;
   isSelected?: boolean = false;
-
 }

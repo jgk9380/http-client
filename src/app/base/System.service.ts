@@ -6,15 +6,18 @@ import {SystemUser} from "./SystemUser";
 @Injectable()
 //全局服务，一个应用只有一个
 export class SystemService  {
-  loginUser: SystemUser;
+  loginUser?: SystemUser;
   constructor() {
-
   }
 
-  login(userId: string, pwd: string): Promise<boolean> {
+  login(loginId: string, pwd: string,remerberMe:boolean): Promise<boolean> {
     //TODO 添加登录逻辑,保存本地。下次登录可以读取这里的信息
     //loginUser
-    this.loginUser = new SystemUser(userId);
+    this.loginUser = new SystemUser();
+    this.loginUser.loginId=loginId;
+    this.loginUser.loginPwd=pwd;
+    this.loginUser.loginDate=new Date();
+
     return Promise.resolve(true);
   }
 
@@ -28,13 +31,5 @@ export class SystemService  {
     if (this.loginUser) return true;
     else return false;
   }
-
-  // initNavBarItems() {
-  //   this.items.push(new NavBarItem("登录", "/login"));
-  //   this.items.push(new NavBarItem("存量", "/stock"));
-  //   this.items.push(new NavBarItem("报表", "/test1"));
-  //   this.items.push(new NavBarItem("测试1", "/test1"));
-  //   this.items.push(new NavBarItem("测试2", "/test2"));
-  // }
 
 }
