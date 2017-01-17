@@ -9,10 +9,10 @@ export class MenuService {
   currentMenuItem: MenuItem;
 
   constructor(private router: Router) {
-    this.currentNbi = this.getLoginNbiItem();
+    this.currentNbi = this.getStockNbiItem();
     this.currentNbi.isSelected=true;
+    //this.nbiItems.push(this.currentNbi);
     this.nbiItems.push(this.currentNbi);
-    this.nbiItems.push(this.getStockNbiItem());
     this.nbiItems.push(this.getReportNbiItem());
   }
 

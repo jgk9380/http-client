@@ -125,3 +125,8 @@ footer {
 .ui-dialog-title{
   background: #adc9ff;
 }
+
+#login{
+  margin-left: 5em;
+  margin-top: 20px;
+}
