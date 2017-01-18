@@ -1,5 +1,6 @@
 import {Injectable, OnInit} from '@angular/core';
 import {SystemUser} from "./SystemUser";
+import {Router} from "@angular/router";
 
 
 
@@ -7,7 +8,9 @@ import {SystemUser} from "./SystemUser";
 //全局服务，一个应用只有一个
 export class SystemService  {
   loginUser?: SystemUser;
-  constructor() {
+  defaultUrl:string="/stock";
+
+  constructor(private  router:Router) {
   }
 
   login(loginId: string, pwd: string,remerberMe:boolean): Promise<boolean> {

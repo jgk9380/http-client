@@ -19,7 +19,7 @@ export class NavBar implements OnInit {
   // menuShow: boolean;
 
 
-  constructor(private router: Router, private ss:SystemService,public  ms:MenuService) {
+  constructor(private router: Router, public ss:SystemService,public  ms:MenuService) {
   }
 
   ngOnInit() {

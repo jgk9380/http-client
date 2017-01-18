@@ -5,7 +5,9 @@ import {Router} from "@angular/router";
 @Injectable()
 export class MenuService {
   nbiItems: NavBarItem[] = [];//横菜单
+  lastNbi:NavBarItem[];
   currentNbi: NavBarItem;//及左菜单
+  lastMenuItem:MenuItem[];
   currentMenuItem: MenuItem;
 
   constructor(private router: Router) {
@@ -26,8 +28,10 @@ export class MenuService {
   }
 
   click(mi: MenuItem) {
-    if (this.currentMenuItem)
+    if (this.currentMenuItem) {
       this.currentMenuItem.isSelected = false;
+      this.lastMenuItem.push(this.currentMenuItem);
+    }
     this.currentMenuItem = mi;
     mi.isSelected = true;
 
@@ -43,11 +47,20 @@ export class MenuService {
 
   clickBarItem(nbi: NavBarItem) {
     console.log("click on navBar:" + nbi.title + "  links = " + nbi.link)
-    if(this.currentNbi)
-      this.currentNbi.isSelected=false;
+    if(this.currentNbi) {
+      this.currentNbi.isSelected = false;
+      this.lastNbi.push(this.currentNbi);
+    }
     nbi.isSelected=true;
     this.currentNbi=nbi;
     this.router.navigate([nbi.link]);
+  }
+  goBack(){
+    if(this.currentNbi)
+      this.currentNbi.isSelected=false;
+    this.currentNbi=this.lastNbi.pop();
+    this.currentNbi.isSelected=true;
+    this.router.navigate([this.currentNbi.link]);//退回到上一个barItem；
   }
 
   getLoginNbiItem() {
