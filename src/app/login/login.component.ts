@@ -14,6 +14,11 @@ export class LoginComponent implements OnInit {
   public pwd: string="";
   rememberMe:boolean;
 
+  display:boolean=true;
+  draggable=false;
+  closable=false;
+  resizable=false;
+
   constructor(private ss: SystemService) {
   }
 
