@@ -5,9 +5,9 @@ import {Router} from "@angular/router";
 @Injectable()
 export class MenuService {
   nbiItems: NavBarItem[] = [];//横菜单
-  lastNbi:NavBarItem[];
+  lastNbi:NavBarItem[]=[];
   currentNbi: NavBarItem;//及左菜单
-  lastMenuItem:MenuItem[];
+  lastMenuItem:MenuItem[]=[];
   currentMenuItem: MenuItem;
 
   constructor(private router: Router) {
