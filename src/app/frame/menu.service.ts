@@ -50,11 +50,13 @@ export class MenuService {
     if(this.currentNbi) {
       this.currentNbi.isSelected = false;
       this.lastNbi.push(this.currentNbi);
+      //this.lastMenuItem. 清除
     }
     nbi.isSelected=true;
     this.currentNbi=nbi;
     this.router.navigate([nbi.link]);
   }
+
   goBack(){
     if(this.currentNbi)
       this.currentNbi.isSelected=false;
