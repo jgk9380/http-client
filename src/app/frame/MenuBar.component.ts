@@ -5,7 +5,7 @@ import {Component, OnInit} from '@angular/core';
 
 import {Router} from "@angular/router";
 import {MenuItem} from "primeng/components/common/api";
-import {SystemService} from "../base/System.service";
+import {LoginService} from "../login/Login.service";
 import {NavBarItem, MenuService} from "./menu.service";
 
 @Component({
@@ -19,7 +19,7 @@ export class NavBar implements OnInit {
   // menuShow: boolean;
 
 
-  constructor(private router: Router, public ss:SystemService,public  ms:MenuService) {
+  constructor(private router: Router, public ss:LoginService, public  ms:MenuService) {
   }
 
   ngOnInit() {

@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {NgModule, Injectable} from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import {HttpModule, BrowserXhr} from '@angular/http';
 import {ButtonModule} from 'primeng/primeng';
 
 
@@ -12,7 +12,7 @@ import {MessagesModule} from 'primeng/primeng';
 import {GrowlModule} from 'primeng/primeng';
 import { Num2chinesePipe } from './base/num2chinese.pipe';
 import { LoginComponent } from './login/login.component'
-import {SystemService} from "./base/System.service";
+import {LoginService} from "./login/Login.service";
 import { FrameComponent } from './frame/frame.component';
 import {AppRoutingModule} from "./routing.module";
 import {NavBar} from "./frame/MenuBar.component";
@@ -23,6 +23,8 @@ import {MenuComponent} from "./frame/Menu.component";
 import {MenuService} from "./frame/menu.service";
 import { MainComponent } from './main/main.component';
 import {DialogModule} from 'primeng/primeng';
+import {GlobalConfig} from "./base/global-config.service";
+import {CorsBrowserXhr} from "./base/cors-browser-xhr.service";
 @NgModule({
   imports: [
     BrowserModule,
@@ -49,7 +51,20 @@ import {DialogModule} from 'primeng/primeng';
     MenuComponent,
     MainComponent,
   ],
-  providers: [SystemService,MenuService],
+  providers: [
+                { provide: BrowserXhr, useClass:CorsBrowserXhr },
+                LoginService,
+                MenuService,
+                GlobalConfig
+              ],
   bootstrap: [FrameComponent]
 })
+
+
+
+
+
 export class AppModule { }
+
+
+

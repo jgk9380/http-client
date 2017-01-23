@@ -103,7 +103,7 @@
  * events, rather their callbacks are unpredictable both in order and time.
  *
  *
- * ## Global Error Handling
+ * ## GlobalConfig Error Handling
  *
  *
  * ## Composability

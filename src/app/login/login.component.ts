@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {SystemService} from "../base/System.service";
+import {LoginService} from "./Login.service";
 import {Router} from "@angular/router";
+import {GlobalConfig} from "../base/global-config.service";
 
 @Component({
   moduleId: 'module.id',
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
   public pwd: string;
   rememberMe: boolean = true;
 
-  constructor(private ss: SystemService, private router: Router) {
+  constructor(private ss: LoginService, private router: Router,) {
   }
 
   ngOnInit() {
@@ -29,8 +30,9 @@ export class LoginComponent implements OnInit {
 
   login() {
     console.log("userId=" + this.userId + "  pwd=" + this.pwd + "  rememberMe=" + this.rememberMe);
-    if (this.ss.login(this.userId, this.pwd, this.rememberMe)) {
-      console.log("登录成功")
+    let res=this.ss.login(this.userId, this.pwd);
+    console.log(`res=${JSON.stringify(res)}`);
+    if (res) {
       //如果成功，保存用户名，密码。以便下次登录使用免输密码。
       //如果导航url为空，导航到指定地址
       if (this.rememberMe) {

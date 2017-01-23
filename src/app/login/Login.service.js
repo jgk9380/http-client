@@ -6,7 +6,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require('@angular/core');
-var SystemUser_1 = require("./SystemUser");
+var SystemUser_1 = require("./../base/system-user");
 var SystemService = (function () {
     function SystemService() {
     }

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {SystemService} from "../base/System.service";
+import {LoginService} from "../login/Login.service";
 
 @Component({
   selector: 'hc-frame',
@@ -11,7 +11,7 @@ export class FrameComponent implements OnInit {
   adsShow: boolean = false;
   display: boolean = false;
 
-  constructor(public ss:SystemService) {
+  constructor(public ss:LoginService) {
   }
 
   ngOnInit() {
