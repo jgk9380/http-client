@@ -8,9 +8,9 @@ import {StockPromotion} from "./StockPromotion";
 @Injectable()
 export class StockPromotionService {
   constructor(private http: Http) {
-  }
 
-  stockPromotionUrl: string = "http://122.192.127.45:1274/StockPromotion/byTele";
+  }
+  stockPromotionUrl: string = "http://127.0.0.1:1274/StockPromotion/byTele";
   // 1、网址
   // 外网段地址：122.192.127.45:1275/promotion/
   // 内网段地址：10.34.56.78/promotion/
@@ -24,7 +24,6 @@ export class StockPromotionService {
   // }
 
   getStockPromotion(tele: string): Promise<StockPromotion[]> {
-
     //let tempStockPromotionUrl:string = this.stockPromotionUrl + tele;
     let tempStockPromotionUrl:string  = `${this.stockPromotionUrl}/${tele}`;
     console.info("url=" + tempStockPromotionUrl);

@@ -28,7 +28,7 @@
 </header>
 <div class="menu-bar">
   <hc-menu-bar></hc-menu-bar>
-  <div class="greeting" *ngIf="ss.loginUser"><span>欢迎你：{{ss.loginUser.loginId}}</span></div>
+  <div class="greeting" *ngIf="ss.loginUser"><span>欢迎你：{{ss.loginUser?.loginId}}</span></div>
   <!--<span id="login" (click)="showLogin()">登录</span>-->
 </div>
 <div class="main">

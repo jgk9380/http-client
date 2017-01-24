@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import {NgModule, Injectable} from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import {HttpModule, BrowserXhr} from '@angular/http';
+import {HttpModule, BrowserXhr, Http} from '@angular/http';
 import {ButtonModule} from 'primeng/primeng';
 
 
@@ -24,7 +24,10 @@ import {MenuService} from "./frame/menu.service";
 import { MainComponent } from './main/main.component';
 import {DialogModule} from 'primeng/primeng';
 import {GlobalConfig} from "./base/global-config.service";
+//import {CorsBrowserXhr} from "./base/cors-browser-xhr.service";
+import {AuthenticatedHttpService} from "./base/AuthenticatedHttpService";
 import {CorsBrowserXhr} from "./base/cors-browser-xhr.service";
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -52,7 +55,8 @@ import {CorsBrowserXhr} from "./base/cors-browser-xhr.service";
     MainComponent,
   ],
   providers: [
-                { provide: BrowserXhr, useClass:CorsBrowserXhr },
+               { provide: BrowserXhr, useClass:CorsBrowserXhr },
+           //     { provide: Http, useClass:AuthenticatedHttpService},
                 LoginService,
                 MenuService,
                 GlobalConfig
