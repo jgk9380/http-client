@@ -7,10 +7,9 @@ import {LoginService} from "../login/Login.service";
   styleUrls: ['./frame.component.css']
 })
 export class FrameComponent implements OnInit {
-  menuShow: boolean = false;
+  menuShow: boolean = true;
   adsShow: boolean = false;
   display: boolean = false;
-
   constructor(public ss:LoginService) {
   }
 
