@@ -12,7 +12,7 @@ export class LoginService {
   private login_url: string;// = this.baseUrl+'login'
   private principal_url: string;// = this.baseUrl+'user'
   private users_url: string; //= this.baseUrl+'user-service/users'
-  loginUser: SystemUser;
+  public loginUser: SystemUser;
   defaultUrl: string = "/stock";
 
   constructor(private  router: Router, private http: Http, private gc: GlobalConfig) {
@@ -36,17 +36,21 @@ export class LoginService {
     this.login_url = this.gc.baseUrl + 'login' + "/" + loginId + "/" + pwd;
     console.log("auth=" + this.login_url);
     return this.http.get(this.login_url, {headers: headers})
-      .toPromise()
-      .then(function (response: Response) {
+      .toPromise().then(response=> {
           // console.log("response="+JSON.stringify(response));
           // console.log("response.json="+JSON.stringify(response.json()));
           // console.log("loginUser="+JSON.stringify(this.loginUser));
+          console.log("res.result="+response.json().result+"   bool= "+(response.json().result === 1))
           if (response.json().result === 1) {
-            this.loginUser = new SystemUser();
-            this.loginUser.loginId = loginId;
-            this.loginUser.loginPwd = pwd;
-            this.loginUser.loginDate = new Date();
-            console.log("登录成功");
+            console.log("登录成功1");
+            //let loginUser =
+            this.loginUser={loginId:loginId,loginPwd:pwd};
+            // console.log("登录成功2");
+            // this.loginUser.loginId = loginId;
+            // console.log("登录成功3");
+            // this.loginUser.loginPwd = pwd;
+            // //this.loginUser.loginDate = new Date();
+            // console.log("登录成功4");
             return 'success';//sucess=true
           }else{
             console.log("登录失败，原因："+response.json().msg )
@@ -82,7 +86,7 @@ export class LoginService {
     let msg = (error.message) ? error.message :
       error.status ? `${error.status} - ${error.statusText}` : 'unknown error';
     console.error("err.msg=" + msg); // log to console instead
-    console.error("error.msg=" + JSON.stringify(error))
+    //console.error("error.msg=" + JSON.stringify(error))
     this.loginUser = null;
     //return Promise.reject(msg);
     return Promise.reject(false);
