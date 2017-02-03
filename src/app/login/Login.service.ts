@@ -23,34 +23,19 @@ export class LoginService {
   }
 
   login(loginId: string, pwd: string): Promise<boolean> {
-    //TODO 添加登录逻辑,保存本地。下次登录可以读取这里的信息
-    //loginUser
-    //let headers = new Headers({ authorization: 'Basic ' + btoa(user.username + ':' + user.password) });
+
     let auth = 'Basic ' + btoa(loginId + ':' + pwd);
-    let headers = new Headers();
-    headers.append('Authorization', auth);
+    let headers = new Headers({ 'Content-Type': 'application/json' });
     headers.append('Accept', "application/json");
-    //let headers = new Headers({ 'Content-Type': 'application/json' });
-    //$httpProvider.defaults.withCredentials = true
-    //headers.append("Access-Control-Allow-Origin","*");
+    headers.append('Authorization', auth);
     this.login_url = this.gc.baseUrl + 'login' + "/" + loginId + "/" + pwd;
     console.log("auth=" + this.login_url);
     return this.http.get(this.login_url, {headers: headers})
       .toPromise().then(response=> {
-          // console.log("response="+JSON.stringify(response));
-          // console.log("response.json="+JSON.stringify(response.json()));
-          // console.log("loginUser="+JSON.stringify(this.loginUser));
           console.log("res.result="+response.json().result+"   bool= "+(response.json().result === 1))
           if (response.json().result === 1) {
             console.log("登录成功1");
-            //let loginUser =
             this.loginUser={loginId:loginId,loginPwd:pwd};
-            // console.log("登录成功2");
-            // this.loginUser.loginId = loginId;
-            // console.log("登录成功3");
-            // this.loginUser.loginPwd = pwd;
-            // //this.loginUser.loginDate = new Date();
-            // console.log("登录成功4");
             return 'success';//sucess=true
           }else{
             console.log("登录失败，原因："+response.json().msg )
@@ -58,7 +43,6 @@ export class LoginService {
           }
         }
       ).catch(this.handleError);
-    //return Promise.resolve(true);
   }
 
   loginOut(): Promise < boolean > {

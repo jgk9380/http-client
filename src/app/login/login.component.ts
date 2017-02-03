@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    //读取上次登录成功保存本地的用户名和密码。
     if (localStorage["userId"]) {
       this.userId = localStorage["userId"];
     }
@@ -35,9 +36,11 @@ export class LoginComponent implements OnInit {
     res.then(x=>{
       console.log("组件成功");
       if (this.rememberMe) {
+        //登录成功,保存本地。下次登录可以读取这里的信息
         localStorage["userId"] = this.userId;
         localStorage["pwd"] = this.pwd;
       }
+      //TODO 定向到默认路由或登录前的路由。
       this.router.navigate(["/stock"]);
     });
   }
