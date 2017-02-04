@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {LoginService} from "../login/Login.service";
+import {Http} from "@angular/http";
 
 @Component({
   selector: 'hc-frame',
@@ -10,7 +11,7 @@ export class FrameComponent implements OnInit {
   menuShow: boolean = true;
   adsShow: boolean = false;
   display: boolean = false;
-  constructor(public ss:LoginService) {
+  constructor(public ss:LoginService,public http:Http) {
   }
 
   ngOnInit() {

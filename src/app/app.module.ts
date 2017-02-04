@@ -55,8 +55,9 @@ import {CorsBrowserXhr} from "./base/cors-browser-xhr.service";
     MainComponent,
   ],
   providers: [
-               { provide: BrowserXhr, useClass:CorsBrowserXhr },
-           //     { provide: Http, useClass:AuthenticatedHttpService},
+             { provide: BrowserXhr, useClass:CorsBrowserXhr },
+              // { provide: AuthenticatedHttpService, useClass:AuthenticatedHttpService},
+               { provide: Http, useClass:AuthenticatedHttpService},
                 LoginService,
                 MenuService,
                 GlobalConfig

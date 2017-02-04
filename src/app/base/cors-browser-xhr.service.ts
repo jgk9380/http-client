@@ -7,7 +7,6 @@ export class CorsBrowserXhr extends BrowserXhr {
   constructor() {
     super();
   }
-
   build(): any {
     let xhr:XMLHttpRequest = super.build();
     xhr.withCredentials = true;
