@@ -13,26 +13,18 @@ import {isType} from "@angular/core/src/type";
 
 @Injectable()
 export class AuthenticatedHttpService extends Http {
-  private loginUser: SystemUser;//如果不为空表示已登录，每次请求需附带登录信息
-  constructor(backend: XHRBackend, defaultOptions: RequestOptions) {
-    super(backend, defaultOptions);
-  }
 
-  setLoginUser(loginUser: SystemUser) {
-    if (loginUser == null)
-      console.log("设置loginUser为null");
-    else
-      console.log("设置loginUser已登录");
-    this.loginUser = loginUser;
+  constructor(backend: XHRBackend, defaultOptions: RequestOptions,public ls:LoginService) {
+    super(backend, defaultOptions);
   }
 
   request(url: string | Request, options?: RequestOptionsArgs): Observable<Response> {
     console.log(`url=${JSON.stringify(url)}`);
     if (url instanceof Request) {
-      let urlRequest = <Request> url;
-      if (this.loginUser) {
+      if (this.ls.getLoginUser()) {
+        let urlRequest = <Request> url;
         console.log("已登录");
-        let auth = 'Basic ' + btoa(this.loginUser.loginId + ':' + this.loginUser.loginPwd);
+        let auth = 'Basic ' + btoa(this.ls.getLoginUser().loginId + ':' + this.ls.getLoginUser().loginPwd);
         console.log(`auth=${auth}`);
         if (!urlRequest.headers)
           urlRequest.headers = new Headers({'Content-Type': 'application/json'});
@@ -42,19 +34,16 @@ export class AuthenticatedHttpService extends Http {
     } else {
       if (!options)
         options = {};
-      if (this.loginUser) {
-        let auth = 'Basic ' + btoa(this.loginUser.loginId + ':' + this.loginUser.loginPwd);
+      if (this.ls.getLoginUser()) {
+        let auth = 'Basic ' + btoa(this.ls.getLoginUser().loginId + ':' + this.ls.getLoginUser().loginPwd);
         if (!options.headers)
           options.headers = new Headers({'Content-Type': 'application/json'});
         console.log(`----in true  auth=${auth}`);
         options.headers.append('Accept', "application/json");
         options.headers.append('Authorization', auth);
-
-      } else {
-        //options.headers = new Headers({'Content-Type': 'application/json'});
-        console.log("没有登录");
       }
     }
+
     return super.request(url, options).catch((error: Response) => {
       console.log('----------error--------');
       if ((error.status === 401 || error.status === 403) && (window.location.href.match(/\?/g) || []).length < 2) {

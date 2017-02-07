@@ -11,7 +11,7 @@ export class FrameComponent implements OnInit {
   menuShow: boolean = true;
   adsShow: boolean = false;
   display: boolean = false;
-  constructor(public ss:LoginService,public http:Http) {
+  constructor(public ls:LoginService,public http:Http) {
   }
 
   ngOnInit() {

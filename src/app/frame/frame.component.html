@@ -28,8 +28,8 @@
 </header>
 <div class="menu-bar">
   <hc-menu-bar></hc-menu-bar>
-  <div class="greeting" *ngIf="http.loginUser"><span>欢迎你：{{http.loginUser?.loginId}}</span></div>
-  <!--<span id="login" (click)="showLogin()">登录</span>-->
+  <div class="greeting" *ngIf="ls.loginUser"><span>欢迎你：{{ls.loginUser?.loginId+' '}}</span><span><a routerLink="/login">注销</a></span></div>
+  <div class="greeting" *ngIf="!ls.loginUser"><span><a routerLink="/login">登录</a></span></div>
 </div>
 <div class="main">
   <nav class="nav-menu" *ngIf="menuShow">

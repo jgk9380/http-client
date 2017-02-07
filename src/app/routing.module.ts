@@ -10,7 +10,7 @@ import {Test1Component} from "./test1/test1.component";
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', redirectTo: '/stock', pathMatch: 'full' },
   { path: 'login',  component: LoginComponent },
   { path: 'stock', component: StockComponent },
   { path: 'test1', component: Test1Component },
