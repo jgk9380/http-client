@@ -1,12 +1,6 @@
-/*:host {*/
-  /*display: flex;*/
-  /*flex-direction: column; !*row，row-reverse*!*/
-  /*min-height: 100vh;*/
-  /*max-height: 100vh;*/
-  /*padding: 0;*/
-  /*margin: 0;*/
-  /*!*background: #08f4ff;*!*/
-/*}*/
+:host {
+  background: #aaa0ff;
+}
 
 #mainFrame {
   display: flex;

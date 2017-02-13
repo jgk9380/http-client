@@ -3,6 +3,7 @@ import {LoginService} from "../login/Login.service";
 import {Http, Headers, Response} from "@angular/http";
 import {Router} from "@angular/router";
 import {GlobalConfig} from "../base/global-config.service";
+import {getResponseURL} from "@angular/http/src/http_utils";
 
 @Component({
   selector: 'hc-frame',
@@ -12,14 +13,13 @@ import {GlobalConfig} from "../base/global-config.service";
 export class FrameComponent implements OnInit {
   menuShow: boolean = true;
   adsShow: boolean = false;
-  display: boolean = false;
 
   public userId: string;
   public pwd: string;
   rememberMe: boolean = false;
-  loginResult:boolean;
+  infoResult: string;
 
-  constructor(public ls:LoginService,public http:Http, private router: Router , private gc: GlobalConfig) {
+  constructor(public ls: LoginService, public http: Http, private router: Router, private gc: GlobalConfig) {
   }
 
   ngOnInit() {
@@ -36,22 +36,6 @@ export class FrameComponent implements OnInit {
     this.menuShow = !this.menuShow;
   }
 
-  showLogin() {
-    this.display = true;
-  }
-  closeLogin(){
-    this.display = false;
-  }
-
-  private  handleError(error: any) {
-    let msg = (error.message) ? error.message :
-      error.status ? `${error.status} - ${error.statusText}` : 'unknown error';
-    console.error("err.msg=" + msg); // log to console instead
-    this.ls.setLoginUser(null);
-    return Promise.reject(false);
-  }
-
-
   login(): Promise<boolean> {
     let auth = 'Basic ' + btoa(this.userId + ':' + this.pwd);
     let headers = new Headers({'Content-Type': 'application/json'});
@@ -64,21 +48,45 @@ export class FrameComponent implements OnInit {
       .toPromise().then(response => {
           console.log("res.result=" + response.json().result + "   bool= " + (response.json().result === 1) + "  result=" + response.json().result)
           if (response.json().authenticated) {
-            console.log("登录成功");
+            console.info("登录成功");
+            if (this.rememberMe) {
+              localStorage["userId"] = this.userId;
+              localStorage["pwd"] = this.pwd;
+            }
             this.ls.setLoginUser({loginId: this.userId, loginPwd: this.pwd});
-            //this.router.navigate(["/"])
-            return true;//sucess=true
+            this.infoResult = null;
+            return true;
           } else {
-            console.log("登录失败，原因：" + response.json().msg + " " + JSON.stringify(response.json()))
-            this.loginResult=true;
+            console.error("登录失败,没有取到登录用户信息，result：" + response.json().msg + " " + JSON.stringify(response.json()))
+            this.infoResult = "用户名或密码错";
             return false;
           }
         }
       ).catch((x: any) => {
-        console.log("登录失败");
-        this.loginResult=true;
+        console.error("登录失败");
+        let headers = new Headers({'Content-Type': 'application/json'});
+        let valid_url = this.gc.baseUrl + 'users/valid/' + this.userId + "/" + this.pwd;
+        this.http.get(valid_url, {headers: headers})
+          .toPromise().then(response => {
+            this.infoResult = response.json().msg;
+          }
+        ).catch((y: any) => this.handleError(y))
         this.handleError(x);
         return false;
+      });
+  }
+
+  queryPwd(): Promise<boolean> {
+    let auth = 'Basic ' + btoa(this.userId + ':' + this.pwd);
+    let headers = new Headers({'Content-Type': 'application/json'});
+    headers.append('Accept', "application/json");
+    //headers.append("Access-Control-Allow-Origin", "*");
+    let query_url = this.gc.baseUrl + 'users/queryPwd/' + this.userId;
+    return this.http.get(query_url, {headers: headers})
+      .toPromise().then(response => {
+        this.infoResult = response.json().msg;
+      }).catch((x: any) => {
+        this.handleError(x);
       });
   }
 
@@ -90,5 +98,13 @@ export class FrameComponent implements OnInit {
         return response.json().principal.name;
       })
       .catch(this.handleError);
+  }
+
+  private  handleError(error: any) {
+    let msg = (error.message) ? error.message :
+      error.status ? `${error.status} - ${error.statusText}` : 'unknown error';
+    console.error("err.msg=" + msg); // log to console instead
+    this.ls.setLoginUser(null);
+    return Promise.reject(false);
   }
 }
