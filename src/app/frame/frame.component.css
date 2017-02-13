@@ -1,11 +1,20 @@
-:host {
+/*:host {*/
+  /*display: flex;*/
+  /*flex-direction: column; !*row，row-reverse*!*/
+  /*min-height: 100vh;*/
+  /*max-height: 100vh;*/
+  /*padding: 0;*/
+  /*margin: 0;*/
+  /*!*background: #08f4ff;*!*/
+/*}*/
+
+#mainFrame {
   display: flex;
   flex-direction: column; /*row，row-reverse*/
   min-height: 100vh;
   max-height: 100vh;
   padding: 0;
   margin: 0;
-  /*background: #08f4ff;*/
 }
 
 header {
@@ -44,14 +53,12 @@ header {
   background: #ffd7e7;
 }
 
-
-
 .main .content {
   flex: 1;
   background: #d9f6ff;
   padding-left: 2em;
-  padding-top:2em;
-  overflow: scroll ;
+  padding-top: 2em;
+  overflow: scroll;
 }
 
 .main .ads {
@@ -72,29 +79,30 @@ footer {
 }
 
 /*@media (max-width: 768px) {*/
-  /*.main {*/
-    /*flex-direction: column;*/
-    /*flex: 1;*/
-  /*}*/
-
-  /*.main .nav-menu {*/
-
-  /*}*/
-
-  /*.ads {*/
-    /*display: none;*/
-  /*}*/
-
-  /*.content {*/
-    /*flex: auto;*/
-  /*}*/
+/*.main {*/
+/*flex-direction: column;*/
+/*flex: 1;*/
 /*}*/
 
-.nav-menu-toggle{
+/*.main .nav-menu {*/
+
+/*}*/
+
+/*.ads {*/
+/*display: none;*/
+/*}*/
+
+/*.content {*/
+/*flex: auto;*/
+/*}*/
+/*}*/
+
+.nav-menu-toggle {
   background: rgba(53, 255, 50, 0.23);
   /*height:calc(100vh - 5em);*/
-  width:12px;
+  width: 12px;
 }
+
 .triangle-left {
   width: 0;
   height: 0;
@@ -117,21 +125,26 @@ footer {
   top: 50%;
 }
 
-
-.ui-dialog-titlebar{
+.ui-dialog-titlebar {
   background: #adc9ff;
 }
 
-.ui-dialog-title{
+.ui-dialog-title {
   background: #adc9ff;
 }
 
-#login{
+#login {
   margin-left: 5em;
   margin-top: 20px;
 }
-.greeting{
+
+.greeting {
   display: inline;
   float: right;
   margin-right: 2em;
+}
+
+
+#loginDialog hr{
+  color: blue;
 }

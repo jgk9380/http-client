@@ -5,5 +5,5 @@ export interface SystemUser {
   loginPwd?:string;
  //loginDate?:Date;
   loginEmp?:Employee;
-  rememberMe?:boolean;
+  //rememberMe?:boolean;
 }

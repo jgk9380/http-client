@@ -21,35 +21,93 @@
 <!--</div>-->
 <!--<footer>footer</footer>-->
 <!--</div>-->
-
 <!--host设置body样式-->
-<header>
-  <div style="margin-top: 0.5em">盐城联通存量活动管理</div>
-</header>
-<div class="menu-bar">
-  <hc-menu-bar></hc-menu-bar>
-  <div class="greeting" *ngIf="ls.loginUser"><span>欢迎你：{{ls.loginUser?.loginId+' '}}</span><span><a routerLink="/login">注销</a></span></div>
-  <div class="greeting" *ngIf="!ls.loginUser"><span><a routerLink="/login">登录</a></span></div>
-</div>
-<div class="main">
-  <nav class="nav-menu" *ngIf="menuShow">
-    <hc-menu-pad></hc-menu-pad>
-  </nav>
-  <div class="nav-menu-toggle" (click)="menuToggle()">
-      <div [class.triangle-left]="menuShow" [class.triangle-right]="!menuShow"></div>
+<div id="mainFrame" *ngIf="ls.getLoginUser()">
+  <header>
+    <div style="margin-top: 0.5em">盐城联通存量活动管理</div>
+  </header>
+  <div class="menu-bar">
+    <hc-menu-bar></hc-menu-bar>
+    <div class="greeting" *ngIf="ls.loginUser">
+      <span>欢迎你：{{ls.loginUser?.loginId+' '}}</span>
+      <span><a (click)="ls.loginOut()">注销</a></span>
+    </div>
+    <div class="greeting" *ngIf="!ls.loginUser"><span><a routerLink="/login">登录</a></span></div>
   </div>
-  <main class="content">
+  <div class="main">
+    <nav class="nav-menu" *ngIf="menuShow">
+      <hc-menu-pad></hc-menu-pad>
+    </nav>
+    <div class="nav-menu-toggle" (click)="menuToggle()">
+      <div [class.triangle-left]="menuShow" [class.triangle-right]="!menuShow"></div>
+    </div>
+    <main class="content">
       <router-outlet></router-outlet>
-  </main>
-  <aside class="ads" *ngIf="adsShow">ads</aside>
+    </main>
+    <aside class="ads" *ngIf="adsShow">ads</aside>
+  </div>
+  <footer>
+    <div style="margin-right: 3em">互联网部 at 2017-01-12</div>
+  </footer>
 </div>
-<footer>
-  <div style="margin-right: 3em">互联网部 at 2017-01-12</div>
-</footer>
-
 <!--<p-dialog header="登录" [(visible)]="display"  modal="true" width="400" resizable="false"  closable="true" draggable="false" >-->
-  <!--<http-client-login></http-client-login>-->
-  <!--&lt;!&ndash;需要 font-awesone 支持&ndash;&gt;-->
+<!--<http-client-login></http-client-login>-->
+<!--&lt;!&ndash;需要 font-awesone 支持&ndash;&gt;-->
 <!--</p-dialog>-->
+
+
+<div class="loginDialog" *ngIf="!ls.getLoginUser()">
+  <p-dialog header="登录" [visible]="true" [modal]="true" width="400" [resizable]="false" [closable]="false"
+            [draggable]="false"  [closeOnEscape]="false">
+    <form class="form-horizontal" role="form">
+      <div class="form-group">
+        <label for="loginId" class="col-sm-3 control-label">用户名：</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="loginId" placeholder="请输入用户名" [(ngModel)]="userId" name="name">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="pwd" class="col-sm-3 control-label">密码：</label>
+        <div class="col-sm-9">
+          <input type="password" class="form-control" id="pwd" placeholder="请输入密码" [(ngModel)]="pwd" name="pwd">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-9">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" [(ngModel)]="rememberMe" name="remerberMe">记住我
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group" *ngIf="loginResult">
+        <div class="col-sm-offset-3 col-sm-9">
+          <label style="color: red">
+            {{'用户名或密码错'}}
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-2">
+          <button type="button" id="submit" class="btn btn-primary" (click)="login()">登录</button>
+        </div>
+        <div class="col-sm-2">
+          <button type="button" id="cancel" class="btn btn-primary" (click)="cancel()">取消</button>
+        </div>
+        <!--<div class="col-sm-2">-->
+        <!--<button type="button" id="test" class="btn btn-primary" (click)="test()">test</button>-->
+        <!--</div>-->
+        <!--<div class="col-sm-2" *ngIf="ls.getLoginUser()">-->
+        <!--<button type="button" id="lo" class="btn btn-primary" (click)="loginOut()">注销</button>-->
+        <!--</div>-->
+      </div>
+    </form>
+  </p-dialog>
+</div>
 
 

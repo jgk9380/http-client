@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
     console.log(`auth=${auth}`);
     headers.append('Authorization', auth);
     //headers.append("Access-Control-Allow-Origin", "*");
-    let login_url = this.gc.baseUrl + 'currentUser';
+    let login_url = this.gc.baseUrl + 'users/currentUser';
     return this.http.get(login_url, {headers: headers})
       .toPromise().then(response => {
           console.log("res.result=" + response.json().result + "   bool= " + (response.json().result === 1) + "  result=" + response.json().result)
@@ -84,7 +84,7 @@ export class LoginComponent implements OnInit {
   }
 
   getPrincipal(): Promise < string > {
-    let principal_url = this.gc.baseUrl + "/currentUser";
+    let principal_url = this.gc.baseUrl + "/users/currentUser";
     return this.http.get(principal_url)
       .toPromise()
       .then(function (response: Response) {
@@ -92,10 +92,10 @@ export class LoginComponent implements OnInit {
       })
       .catch(this.handleError);
   }
-  loginOut(){
-    this.router.navigate(["/"]);
-    return this.ls.loginOut();
-  }
+  // loginOut(){
+  //   this.router.navigate(["/"]);
+  //   return this.ls.loginOut();
+  // }
 }
 
 
