@@ -24,7 +24,7 @@
         var nodeBoxes = {}
         particleSystem.eachNode(function(node, pt){
           // node: {mass:#, p:{x,y}, name:"", data:{}}
-          // pt:   {x:#, y:#}  node position in screen coords
+          // pt:   {x:#, y:#}  node currentPosition in screen coords
 
           // determine the box size and round off the coords if we'll be 
           // drawing a text label (awful alignment jitter otherwise...)
@@ -65,8 +65,8 @@
         // draw the edges
         particleSystem.eachEdge(function(edge, pt1, pt2){
           // edge: {source:Node, target:Node, length:#, data:{}}
-          // pt1:  {x:#, y:#}  source position in screen coords
-          // pt2:  {x:#, y:#}  target position in screen coords
+          // pt1:  {x:#, y:#}  source currentPosition in screen coords
+          // pt2:  {x:#, y:#}  target currentPosition in screen coords
 
           var weight = edge.data.weight
           var color = edge.data.color
@@ -91,7 +91,7 @@
           // draw an arrowhead if this is a -> style edge
           if (edge.data.directed){
             ctx.save()
-              // move to the head position of the edge we just drew
+              // move to the head currentPosition of the edge we just drew
               var wt = !isNaN(weight) ? parseFloat(weight) : 1
               var arrowLength = 6 + wt
               var arrowWidth = 2 + wt

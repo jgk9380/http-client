@@ -10,12 +10,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
  */
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
-var login_component_1 = require("./login/login.component");
 var stock_component_1 = require("./Stock/stock.component");
+var test2_component_1 = require("./test2/test2.component");
+var test1_component_1 = require("./test1/test1.component");
 var routes = [
-    { path: '', redirectTo: '/login', pathMatch: 'full' },
-    { path: 'login', component: login_component_1.LoginComponent },
+    { path: '', redirectTo: '/', pathMatch: 'full' },
     { path: 'stock', component: stock_component_1.StockComponent },
+    { path: 'test1', component: test1_component_1.Test1Component },
+    { path: 'test2', component: test2_component_1.Test2Component },
 ];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {

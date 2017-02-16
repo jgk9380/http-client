@@ -5,8 +5,8 @@ import {Component, OnInit} from '@angular/core';
 
 import {Router} from "@angular/router";
 import {MenuItem} from "primeng/components/common/api";
-import {LoginService} from "../login/Login.service";
-import {NavBarItem, MenuService} from "./menu.service";
+import {LoginService} from "../../base/Login.service";
+import {NavBarItem, MenuService} from "../menu.service";
 
 @Component({
   moduleId: 'module.id',

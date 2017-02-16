@@ -46,8 +46,8 @@
         
         particleSystem.eachEdge(function(edge, pt1, pt2){
           // edge: {source:Node, target:Node, length:#, data:{}}
-          // pt1:  {x:#, y:#}  source position in screen coords
-          // pt2:  {x:#, y:#}  target position in screen coords
+          // pt1:  {x:#, y:#}  source currentPosition in screen coords
+          // pt2:  {x:#, y:#}  target currentPosition in screen coords
 
           // draw a line from pt1 to pt2
           ctx.strokeStyle = "rgba(0,0,0, .333)"
@@ -60,7 +60,7 @@
 
         particleSystem.eachNode(function(node, pt){
           // node: {mass:#, p:{x,y}, name:"", data:{}}
-          // pt:   {x:#, y:#}  node position in screen coords
+          // pt:   {x:#, y:#}  node currentPosition in screen coords
 
           // draw a rectangle centered at pt
           var w = 10

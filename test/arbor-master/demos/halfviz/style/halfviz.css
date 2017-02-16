@@ -25,7 +25,7 @@ body{
 
 #viewport{
   background:white;
-/*  position:absolute;*/
+/*  currentPosition:absolute;*/
 /*  top:10px;*/
 /*  left:270px;*/
 /*  margin:10px 0;*/
@@ -212,7 +212,7 @@ a.update{
 }
 
 .io{
-/*  position:absolute;*/
+/*  currentPosition:absolute;*/
 /*  right:10px;
   top:30px;
 */
@@ -264,7 +264,7 @@ a.update{
 }
 
 /*.io .success{
-  position:absolute;
+  currentPosition:absolute;
   top:-30px;
   left:0;
   z-index:20;
@@ -446,6 +446,5 @@ a.update{
 #intro p a:hover{
   text-decoration:underline;
 }
-  
-  
-  
+
+

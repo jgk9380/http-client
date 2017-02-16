@@ -1,6 +1,6 @@
 <!--<div>-->
 <!--<nav>-->
-<!--<a routerLink="/login">login</a>-->
+<!--<a routerLink="/loginUserAdmin">loginUserAdmin</a>-->
 <!--<a routerLink="/stock">stock</a>-->
 <!--</nav>-->
 <!--</div>-->
@@ -29,10 +29,18 @@
   <div class="menu-bar">
     <hc-menu-bar></hc-menu-bar>
     <div class="greeting" *ngIf="ls.loginUser">
-      <span>欢迎你：{{ls.loginUser?.loginId+' '}}</span>
-      <span><a (click)="ls.loginOut()">注销</a></span>
+      <span>
+        欢迎你：{{ls.getLoginUser()?.loginEmp?.name}}&nbsp;&nbsp;
+        <!--部门ls.getLoginUser()?.loginEmp?.departName+':'+-->
+      </span>
+
+      <!--<span class="glyphicon glyphicon-wrench" (click)="showEditPwd=true;info=null;">&nbsp;</span>-->
+      <span class="fa fa-key " (click)="showEditPwd=true;info=null;">&nbsp;</span>
+      <!--<span class="glyphicon glyphicon-lock" (click)="loginOut()">&nbsp;</span>-->
+      <span class="fa fa-lock" (click)="loginOut()">&nbsp;</span>
+
+         <!--<a (click)="showEditPwd=true">修改密码</a>-->
     </div>
-    <div class="greeting" *ngIf="!ls.loginUser"><span><a routerLink="/login">登录</a></span></div>
   </div>
   <div class="main">
     <nav class="nav-menu" *ngIf="menuShow">
@@ -49,9 +57,13 @@
   <footer>
     <div style="margin-right: 3em">互联网部 at 2017-01-12</div>
   </footer>
+  <div class="content-section implementation">
+    <!--<p-messages [value]="msgs" [style]="'{width: 20em;}'"></p-messages>-->
+    <p-growl [value]="gc.msgs"></p-growl>
+  </div>
 </div>
 <!--<p-dialog header="登录" [(visible)]="display"  modal="true" width="400" resizable="false"  closable="true" draggable="false" >-->
-<!--<http-client-login></http-client-login>-->
+<!--<http-client-loginUserAdmin></http-client-loginUserAdmin>-->
 <!--&lt;!&ndash;需要 font-awesone 支持&ndash;&gt;-->
 <!--</p-dialog>-->
 
@@ -70,7 +82,7 @@
       <div class="form-group">
         <label for="pwd" class="col-sm-3 control-label">密码：</label>
         <div class="col-sm-9">
-          <input type="password" class="form-control" id="pwd" placeholder="请输入密码" [(ngModel)]="pwd" name="pwd">
+          <input type="password" class="form-control" id="pwd" placeholder="请输入密码" [(ngModel)]="pwd" name="pwd" (keyup.enter)="login()" >
         </div>
       </div>
 
@@ -84,10 +96,10 @@
         </div>
       </div>
 
-      <div class="form-group" *ngIf="infoResult">
+      <div class="form-group" *ngIf="info">
         <div class="col-sm-offset-3 col-sm-9">
           <label style="color: red">
-            {{infoResult}}
+            {{info}}
           </label>
         </div>
       </div>
@@ -111,3 +123,35 @@
 </div>
 
 
+<p-dialog header="修改密码" [(visible)]="showEditPwd" [modal]="true" width="400" [resizable]="false" [closable]="true"
+          [draggable]="false" [closeOnEscape]="true">
+  <form class="form-horizontal" role="form">
+    <div class="form-group">
+      <label for="pwd1" class="col-sm-4 control-label">密码：</label>
+      <div class="col-sm-8">
+        <input type="password" class="form-control" id="pwd1" placeholder="请输入密码" [(ngModel)]="newPwd1" name="pwd">
+      </div>
+      <hr/>
+      <label for="pwd2" class="col-sm-4 control-label">重复密码：</label>
+      <div class="col-sm-8">
+        <input type="password" class="form-control" id="pwd2" placeholder="请输入密码" [(ngModel)]="newPwd2" name="pwd">
+      </div>
+    </div>
+    <div class="form-group" *ngIf="info">
+      <div class="col-sm-offset-3 col-sm-9">
+        <label style="color: red">
+          {{info}}
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <span class="col-sm-offset-2 col-sm-2">
+        <button type="button" id="editpwd" class="btn btn-primary" (click)="editPwd()">修改密码</button>
+      </span>
+      <span class="col-sm-offset-2 col-sm-2">
+        <button type="button" id="close" class="btn btn-primary" (click)="showEditPwd=false">关闭</button>
+      </span>
+    </div>
+  </form>
+</p-dialog>

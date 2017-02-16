@@ -3,7 +3,6 @@ import {Employee} from "./employee";
 export interface SystemUser {
   loginId?:string;
   loginPwd?:string;
- //loginDate?:Date;
+  loginDate?:Date;
   loginEmp?:Employee;
-  //rememberMe?:boolean;
 }

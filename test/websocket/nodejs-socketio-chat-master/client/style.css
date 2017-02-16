@@ -358,7 +358,7 @@ section.loginUser>div:before {
   content:" ";
   height:0;
   width:0;
-  position:absolute;
+  currentPosition:absolute;
   pointer-events:none;
 }
 
@@ -840,7 +840,7 @@ section.evaluateSec .answer{
   padding: 8px 12px 4px 12px;
 }
 .poll-loading{
-  /*position: absolute;*/
+  /*currentPosition: absolute;*/
   height: 24px;
   width: 24px;
   margin:0 auto;

@@ -91,7 +91,7 @@
           // by the simulation:
           //   'mass' overrides the default of 1
           //   'fixed' overrides the default of false
-          //   'x' & 'y' will set a starting position rather than
+          //   'x' & 'y' will set a starting currentPosition rather than
           //             defaulting to random placement
           var x = (data.x!=undefined) ? data.x : null
           var y = (data.y!=undefined) ? data.y : null
@@ -535,7 +535,7 @@
         }
       },
 
-      // Find the nearest node to a particular position
+      // Find the nearest node to a particular currentPosition
       nearest:function(pos){
         if (_screenSize!==null) pos = that.fromScreen(pos)
         // if screen size has been specified, presume pos is in screen pixel

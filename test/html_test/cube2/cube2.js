@@ -255,7 +255,7 @@
      * @jsdoc function
      * @name rubics.positionParts
      * @description
-     *   puts the cubes in the new position
+     *   puts the cubes in the new currentPosition
      */
     var positionParts = function (turnAxis, level, direction) {
         if (!turnAxis) {

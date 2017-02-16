@@ -21,7 +21,6 @@
         "styles.css"
       ],
       "scripts": [
-
       ],
       "environments": {
         "source": "environments/environment.ts",

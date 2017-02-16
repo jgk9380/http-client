@@ -31,6 +31,10 @@
       <br/>
     </div>
   </div>
+  <p-dataTable [value]="stockPromotions" *ngIf="stockPromotions&&stockPromotions[0]">
+    <p-column field="promotionName" header="Vin"></p-column>
+    <p-column field="remark" header="Year"></p-column>
+  </p-dataTable>
 </div>
 
 

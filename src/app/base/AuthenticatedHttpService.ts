@@ -6,7 +6,7 @@ import {Request, XHRBackend, RequestOptions, Response, Http, RequestOptionsArgs,
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
-import {LoginService} from "../login/Login.service";
+import {LoginService} from "./Login.service";
 import {SystemUser} from "./system-user";
 import {isType} from "@angular/core/src/type";
 

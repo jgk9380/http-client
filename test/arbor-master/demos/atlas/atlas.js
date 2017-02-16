@@ -33,8 +33,8 @@
         ctx.beginPath()
         particleSystem.eachEdge(function(edge, pt1, pt2){
           // edge: {source:Node, target:Node, length:#, data:{}}
-          // pt1:  {x:#, y:#}  source position in screen coords
-          // pt2:  {x:#, y:#}  target position in screen coords
+          // pt1:  {x:#, y:#}  source currentPosition in screen coords
+          // pt2:  {x:#, y:#}  target currentPosition in screen coords
 
           var weight = null // Math.max(1,edge.data.border/100)
           var color = null // edge.data.color
@@ -67,7 +67,7 @@
 
         particleSystem.eachNode(function(node, pt){
           // node: {mass:#, p:{x,y}, name:"", data:{}}
-          // pt:   {x:#, y:#}  node position in screen coords
+          // pt:   {x:#, y:#}  node currentPosition in screen coords
 
 
           // determine the box size and round off the coords if we'll be

@@ -4,5 +4,7 @@ export class Employee {
   id:string;
   name:string;
   tele:string;
-  depart:Depart;
+  staffId:number;
+  positionTypeId:number;
+  departName:String;
 }

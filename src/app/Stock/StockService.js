@@ -11,7 +11,7 @@ require('rxjs/add/operator/toPromise');
 var StockPromotionService = (function () {
     function StockPromotionService(http) {
         this.http = http;
-        this.stockPromotionUrl = "http://122.192.127.45:1274/StockPromotion/byTele";
+        this.stockPromotionUrl = "http://127.0.0.1:1274/StockPromotion/byTele";
     }
     // 1、网址
     // 外网段地址：122.192.127.45:1275/promotion/

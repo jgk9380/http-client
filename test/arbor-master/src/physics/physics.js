@@ -140,7 +140,7 @@
           // default to verlet
           that.updateForces();
           that.cacheForces();           // snapshot f(t)
-          that.updatePosition(that.dt); // update position to x(t + 1)
+          that.updatePosition(that.dt); // update currentPosition to x(t + 1)
           that.updateForces();          // calculate f(t+1)
           that.updateVelocity(that.dt); // update using f(t) and f(t+1) 
         }
@@ -311,13 +311,13 @@
       },
 
       updatePosition:function(timestep){
-        // translate velocity to a position delta
+        // translate velocity to a currentPosition delta
         var bottomright = null
         var topleft = null        
         
         $.each(active.particles, function(i, point) {
 
-          // move the node to its new position
+          // move the node to its new currentPosition
           if (that.integrator=='euler'){
             point.p = point.p.add(point.v.multiply(timestep));
           }else{

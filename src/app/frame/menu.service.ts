@@ -66,30 +66,40 @@ export class MenuService {
   }
 
   getLoginNbiItem() {
-    let loginBarItem = new NavBarItem("系统管理", "/login");
+    let loginBarItem = new NavBarItem("系统管理", "/loginUserAdmin");
     let items = [{
-      label: '工号管理',
+      label: '基础数据',
       expanded: true,
       items: [
-        {label: '员工管理', icon: 'fa-plus'},
-        {label: '密码管理', icon: 'fa-download'},
-        {label: '权限管理', icon: 'fa-download'}
+        {label: '登录工号', icon: 'fa-plus'},
+        {label: '员工管理', icon: 'fa-plus',routerLink: "/empAdmin"},
+        {label: '部门管理', icon: 'fa-plus'},
+        {label: '权限管理', icon: 'fa-download'},
+        {label: '系统日志', icon: 'fa-download'},
       ]
     },
       {
-        label: '报表管理',
+        label: '业务数据',
         items: [
-          {label: '报表配置', icon: 'fa-refresh', disabled: true},
-          {label: '报表权限', icon: 'fa-repeat', disabled: true},
-          {label: 'New', icon: 'fa-plus', disabled: true},
+          {label: '业务单元', icon: 'fa-refresh',},
+          {label: '网格管理', icon: 'fa-refresh',},
+          {label: '渠道管理', icon: 'fa-repeat',},
+          {label: '指标管理', icon: 'fa-repeat',},
         ]
       },
       {
-        label: '指标管理', routerLink: "/test2",
+        label: '报表管理',
         items: [
-          {label: '报表配置', icon: 'fa-refresh', disabled: true},
-          {label: '报表配置', icon: 'fa-refresh', disabled: true},
-
+          {label: '报表配置', icon: 'fa-refresh',},
+          {label: '报表权限', icon: 'fa-repeat',},
+          {label: '报表上传', icon: 'fa-repeat',},
+        ]
+      },
+      {
+        label: '指标管理',
+        items: [
+          {label: '指标查询', icon: 'fa-refresh',},
+          {label: '指标管理', icon: 'fa-refresh',},
         ]
       },
     ];
@@ -98,50 +108,35 @@ export class MenuService {
   }
 
   getStockNbiItem() {
-    let stockBarItem = new NavBarItem("存量报表", "/stock");
+    let stockBarItem = new NavBarItem("报表查询", "/stock");
     let items = [{
       //是不是要重新命名一个新的？
-      label: 'File1',
+      label: '规定动作',
       expanded: true,
       items: [
-        {label: 'New1', icon: 'fa-plus'},
-        {label: 'Open1', icon: 'fa-download'}
+        {label: '手厅', icon: 'fa-plus'},
+        {label: 'wo视频', icon: 'fa-download'},
+        {label: '换卡', icon: 'fa-download'}
       ]
     },
       {
-        label: 'Edit1',
+        label: '业务推广',
         items: [
-          {label: 'Undo1', icon: 'fa-refresh', disabled: true},
-          {label: 'Redo1', icon: 'fa-repeat', disabled: true},
-          {label: 'New1', icon: 'fa-plus', disabled: true},
+          {label: '低消', icon: 'fa-refresh', disabled: true},
+          {label: '大额流量', icon: 'fa-repeat', disabled: true},
+          {label: '送终端', icon: 'fa-plus', disabled: true},
         ]
       },
-      {label: 'save1', routerLink: "/test2"},
     ];
     stockBarItem.childMenu = items;
     return stockBarItem
   }
 
   getReportNbiItem() {
-    let reportBarItem = new NavBarItem("存量任务", "/test1")
-    let items = [{
-      //是不是要重新命名一个新的？
-      label: 'File11',
-      expanded: true,
-      items: [
-        {label: 'New11', icon: 'fa-plus'},
-        {label: 'Open11', icon: 'fa-download'}
-      ]
-    },
-      {
-        label: 'Edit11',
-        items: [
-          {label: 'Undo11', icon: 'fa-refresh', disabled: true},
-          {label: 'Redo11', icon: 'fa-repeat', disabled: true},
-          {label: 'New11', icon: 'fa-plus', disabled: true},
-        ]
-      },
-      {label: 'save11', routerLink: "/test2"},
+    let reportBarItem = new NavBarItem("任务管理", null)
+    let items = [
+      {label: '待完成任务',routerLink: "/test2"},
+      {label: '任务查询',routerLink: "/test2"},
     ];
     reportBarItem.childMenu = items;
     return reportBarItem;

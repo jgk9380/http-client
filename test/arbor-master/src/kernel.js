@@ -64,7 +64,7 @@
       },
 
       particleModified:function(id, mods){
-        // a particle's position or mass is changed
+        // a particle's currentPosition or mass is changed
         // trace('mod',objkeys(mods))
         if (USE_WORKER) _physics.postMessage({type:"modify", id:id, mods:mods})
         else _physics.modifyNode(id, mods)
@@ -234,4 +234,3 @@
     
     return that.init()    
   }
-  

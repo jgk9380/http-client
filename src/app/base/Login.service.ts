@@ -1,9 +1,9 @@
 import {Injectable, OnInit} from '@angular/core';
-import {SystemUser} from "../base/system-user";
+import {SystemUser} from "./system-user";
 import {Router} from "@angular/router";
 import {Http, Headers, Response} from "@angular/http";
-import {GlobalConfig} from "../base/global-config.service";
-import {AuthenticatedHttpService} from "../base/AuthenticatedHttpService";
+import {GlobalService} from "./global-config.service";
+import {AuthenticatedHttpService} from "./AuthenticatedHttpService";
 import {errorHandler} from "@angular/platform-browser/src/browser";
 
 
@@ -25,7 +25,6 @@ export class LoginService {
   loginOut(): Promise < boolean > {
     //TODO 添加注销逻辑 ,注销成功过后
     this.setLoginUser(null)
-
     return Promise.resolve(true);
   }
 
