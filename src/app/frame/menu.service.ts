@@ -17,6 +17,7 @@ export class MenuService {
     this.nbiItems.push(this.currentNbi);
     this.nbiItems.push(this.getStockNbiItem());
     this.nbiItems.push(this.getReportNbiItem());
+    this.nbiItems.push(this.getWorkPlanNbiItem());
   }
 
   getCurrentNavBarItem(): NavBarItem[] {
@@ -137,6 +138,19 @@ export class MenuService {
     let items = [
       {label: '待完成任务',routerLink: "/test2"},
       {label: '任务查询',routerLink: "/test2"},
+      {label: '完成情况核查',routerLink: "/test2"},
+    ];
+    reportBarItem.childMenu = items;
+    return reportBarItem;
+  }
+
+  getWorkPlanNbiItem() {
+    let reportBarItem = new NavBarItem("工作计划", null)
+    let items = [
+      {label: '计划填报',routerLink: "/test2"},
+      {label: '完成情况填报',routerLink: "/test2"},
+      {label: '计划审核',routerLink: "/test2"},
+      {label: '计划查询',routerLink: "/test2"},
     ];
     reportBarItem.childMenu = items;
     return reportBarItem;
