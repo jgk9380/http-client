@@ -24,6 +24,7 @@ import {CorsBrowserXhr} from "./base/cors-browser-xhr.service";
 
 import {BaseAdminModule} from "./admin/base/base-admin.module";
 
+
 @NgModule({
   imports: [
     BrowserModule,

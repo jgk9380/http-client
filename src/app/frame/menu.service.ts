@@ -72,7 +72,7 @@ export class MenuService {
       label: '基础数据',
       expanded: true,
       items: [
-        {label: '登录工号', icon: 'fa-plus'},
+        {label: '登录工号', icon: 'fa-plus',routerLink:"/loginUserAdmin"},
         {label: '员工管理', icon: 'fa-plus',routerLink: "/empAdmin"},
         {label: '部门管理', icon: 'fa-plus'},
         {label: '权限管理', icon: 'fa-download'},

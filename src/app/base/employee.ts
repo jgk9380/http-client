@@ -6,5 +6,5 @@ export class Employee {
   tele:string;
   staffId:number;
   positionTypeId:number;
-  departName:String;
+  depart:Depart;
 }

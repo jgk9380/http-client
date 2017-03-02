@@ -68,10 +68,10 @@ loginOut(){
               employee.id=reponse.json().id;
               employee.name=reponse.json().name;
               employee.tele=reponse.json().tele;
-              employee.departName=reponse.json().depart.name;
+              employee.depart=reponse.json().depart;
               this.ls.getLoginUser().loginEmp=employee;
               console.info(JSON.stringify(employee));
-              console.info(JSON.stringify( this.ls.getLoginUser().loginEmp.departName));
+              console.info(JSON.stringify( this.ls.getLoginUser().loginEmp.depart.name));
             });
             //this.info = null;
             return true;
